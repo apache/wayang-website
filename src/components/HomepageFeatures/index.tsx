@@ -32,7 +32,16 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/svg/speed.svg').default,
     description: (
       <>
-      Let the optimizer choose the best platform combination for each task based on cost models
+      Let the optimizer choose the best platform combination for each task based on cost models to improve performance 
+      </>
+    ),
+  },
+  {
+    title: 'Extensible architecture',
+    Svg: require('@site/static/img/svg/extensibility.svg').default,
+    description: (
+      <>
+      Need a new platform or operator? Extend Wayang easily with few lines of code
       </>
     ),
   },
