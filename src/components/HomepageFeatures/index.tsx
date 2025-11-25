@@ -10,29 +10,29 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Ultra-fast data processing',
-    Svg: require('@site/static/img/svg/speed.svg').default,
-    description: (
-      <>
-      In-situ federated data processing, up to 150x faster as centralized data platforms
-      </>
-    ),
-  },
-  {
-    title: 'Application independence ',
+    title: 'Platform independence ',
     Svg: require('@site/static/img/svg/agnostic.svg').default,
     description: (
       <>
-        Change three lines of code and move applications across multiple data processing engines.
+        Change one line of code and move applications across different data processing engines
       </>
     ),
   },
   {
-    title: 'Data framework agnostic',
+    title: 'Cross-platform task execution',
     Svg: require('@site/static/img/svg/api.svg').default,
     description: (
       <>
-        Works with Apache Spark, PostgreSQL, Apache Flink, Java Streams, JDBC and more
+        Mix Apache Spark, PostgreSQL, Apache Flink, Java Streams, JDBC and more in one pipeline 
+      </>
+    ),
+  },
+  {
+    title: 'Automated platform selection',
+    Svg: require('@site/static/img/svg/speed.svg').default,
+    description: (
+      <>
+      Let the optimizer choose the best platform combination for each task based on cost models
       </>
     ),
   },
