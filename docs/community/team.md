@@ -18,14 +18,7 @@ id: team
 | Jean-Baptiste Onofré | PMC, Committer | jbonofre |  Dremio, ASF  |
 | Yasser Idris  | PMC, Committer | 	yidris | ExpensePoint, Alexandria University | 
 | Anis Troudi        | Committer  | atroudi    |
-| Bertty Contreras   | Committer  | bertty     | TU Berlin    |
-| Jorge Quiané       | Committer  | quiaru     |
-| Rodrigo Pardo Meza | Committer  | rpardomeza | TU Berlin    |
-| Glaucia Esppenchutz| Committer  | glauesppen |
-| Bertty Contreras  | Committer | berttty |     |
-| Gábor Gévay | Committer | ggevay |    |
 | Christofer Dutz | Committer| chrisdutz | ASF |
-| Rodrigo Pardo Meza | Committer | ro-pardo |   |
 | Mingxi Liu         | Contributor      |            | East China Normal University |
 | Michalis Vargiamis | Contributor      |            | Scalytics |
 | Jeppe Halvorsen    | Contributor      |            | ITU Copenhagen, Falck |
@@ -36,6 +29,11 @@ id: team
 | Akshit Goel | Contributor |            | IIT Delhi |
 | Vedanta Neogi | Contributor |            | IIT Delhi |
 | Christos-Evangelos Lampropoulos | Contributor |            | University of Patras |
+| Bertty Contreras   | Contributor  | bertty     |   |
+| Jorge Quiané       | Contributor  | quiaru     |
+| Rodrigo Pardo Meza | Contributor  | rpardomeza |    |
+| Glaucia Esppenchutz| Contributor  | glauesppen |
+| Gábor Gévay | Contributor | ggevay |    |
 
 You can reach committers directly at \<apache-id\>@apache.org
 
