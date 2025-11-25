@@ -32,7 +32,7 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/svg/speed.svg').default,
     description: (
       <>
-      Let the optimizer choose the best platform combination for each task based on cost models to improve performance 
+      Let the optimizer choose the best platform combination for each task based on cost models to improve performance
       </>
     ),
   },
