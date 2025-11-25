@@ -21,11 +21,17 @@ sidebar_position: 1
   limitations under the License.
 
 -->
-#### *A unified data processing framework that seamlessly integrates and orchestrates multiple data platforms to deliver unparalleled performance and flexibility.*
+#### *A unifying data processing framework that seamlessly integrates and orchestrates multiple data processing systems to deliver performance and flexibility.*
 
-Apache Wayang's three-layer architecture provides a strategic *abstraction* between user applications and underlying data processing platforms, ensuring seamless integration and optimization. The application layer encapsulates application-specific logic, while the core layer acts as an intermediary, translating application logic into a standardized intermediate representation (WayangPlan). This standardized representation is then passed to the platform layer, where it is optimized for execution across a diverse range of data platforms, including but not limited to any database, Spark, Flink, and ML systems. This optimization process ensures that the execution plan (ExecutionPlan) is tailored to the specific strengths and capabilities of each data engine, maximizing performance and efficiency.
+Apache Wayang's three-layer architecture provides a strategic *abstraction* between user applications and underlying data processing platforms, ensuring seamless integration among heterogeneous systems. The application layer encapsulates application-specific logic, while the core layer acts as an intermediary, translating application logic into an intermediate representation (Wayang plan). The Wayang plan is then transformed into an execution plan in the platform layer, where each operator is assigned to be run on a specific platform selected from a diverse pool of execution engines, including but not limited to any database, Apache Spark, Apache Flink, and ML systems. This abstraction allows for cross-platform optimization and execution.
 
-Designed with flexibility as a priority, Apache Wayang enables easy *extensibility* to accommodate new operators and data platforms.
+One of Wayang’s key innovations is its *cross-platform optimizer*, which automates data system selection and spares users from making complex platform choices. 
+This optimization process ensures that the resulted execution plan is tailored to the specific strengths and capabilities of each data engine, maximizing performance and efficiency.
+
+Apache Wayang's core strength lies in its *cross-platform task execution*, enabling developers to seamlessly combine the strengths of various processing engines, such as Spark, Flink, and Tensorflow, *in one pipeline*. 
+Designed with flexibility as a priority, Apache Wayang enables easy *extensibility* to accommodate new operators and data systems.
+The platform's extensibility and ease of use makes it a compelling choice for data engineers and developers seeking a unifying and versatile data processing solution.
+<br/>
 
 ### Architecture and Software stack
 Apache Wayang's unique architecture, unlike traditional DBMSs, decouples the physical planning and execution layers, empowering developers to express their data processing logic in a platform-agnostic fashion. This separation of concerns allows developers to focus on the algorithmic aspects of their applications without being constrained by the intricacies of specific processing platforms.
@@ -34,11 +40,8 @@ Apache Wayang's unique architecture, unlike traditional DBMSs, decouples the phy
 <img width="75%" alt="wayang stack" src="/img/architecture/wayang-stack.png" />  
 <br/><br/>
 
-At the bottom layers of the software stack, there are the different data storage mediums and the supported data processing platforms. On top of these, Wayang’s core consists of the following main components: the optimizer, the executor, the monitor, and platform-specific drivers. Wayang currently supports two main APIs: the Java one and the Scala one. A Python API is currently under development. Besides using any of the supported languages, users can directly input SQL queries via the SQL library, which transforms them into a Wayang plan. Wayang also comes with an ML library for running ML tasks. Users can directly utilize the provided algorithms or can implement their own algorithm using a simple ML abstraction. To enable support for more programming languages in an efficient way, Wayang will soon come with a Polyglot library.
+At the bottom layers of the software stack, there are the different data storage mediums and the supported data processing platforms. On top of these, Wayang’s core consists of the following main components: the optimizer, the executor, the monitor, and platform-specific drivers. Wayang currently supports two main APIs: the Java one and the Scala one. A Python API is also supported with limited operator coverage for the moment. Besides using any of the supported languages, users can directly input SQL queries via the SQL library, which transforms them into a Wayang plan. Wayang also comes with an ML library for running ML tasks. Users can directly utilize the provided algorithms or can implement their own algorithm using a simple ML abstraction. To enable support for more programming languages in an efficient way, Wayang will soon come with a Polyglot library.
 
-<br/>
-
-Apache Wayang's core strength lies in its cross-platform task execution, enabling developers to seamlessly leverage the strengths of various processing engines, such as Hadoop, Spark, and Flink, without sacrificing performance or flexibility. The platform's ease of use further enhances its appeal, making it a compelling choice for data engineers and developers seeking a unified and versatile data processing solution.
 <br/>
 Below you can see on the left, a Wayang plan representing the stochastic gradient descent algorithm, which used in most deep learning tasks. On the right, you can see how the optimizer decided to execute it. Orange nodes are the operators that ran on Spark and green the operators executed as a single Java process.
 <br/>
