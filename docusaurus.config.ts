@@ -3,7 +3,7 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'Apache Wayang',
+  title: 'Apache Wayang™',
   tagline: 'Unifying Data Processing Engines for Cross-Platform Analytics',
   favicon: 'img/wayang-logo.jpg',
 
