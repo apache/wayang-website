@@ -74,7 +74,7 @@ Then you should be able to see the output of the Wordcount example.
 
 # Compiling Apache Wayang
 
-Apache Wayang (incubating) has different dependencies, for compiling, it needs to add some profile in the compilation to enable maven works properly.
+Apache Wayang has different dependencies, for compiling, it needs to add some profile in the compilation to enable maven works properly.
 
  ```shell
 mvn clean compile

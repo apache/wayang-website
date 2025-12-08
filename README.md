@@ -1,5 +1,5 @@
-# Apache Wayang (incubating) Website
-The source repository for the website of Apache Wayang (incubating).
+# Apache Wayang Website
+The source repository for the website of Apache Wayang.
 
 ### Clone the website repo
 

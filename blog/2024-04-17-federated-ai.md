@@ -15,13 +15,13 @@ distributed across multiple serves or devices. It does so without centralizing d
 place or storage. It also prevents the possibility of data breaches and protects sensitive
 personal data. One of the significant challenges in working with AI is the variety of tools found
 in the market or the open-source community. Each tool provides results in a different form;
-integrating them can be pretty challenging. Let's talk about Apache Wayang (incubating) and
+integrating them can be pretty challenging. Let's talk about Apache Wayang and
 how it can help to solve this problem.
 
 ## Apache Wayang in the Federated AI world
 
-Apache Wayang (Wayang, for short), a project in an incubation phase at Apache Software
-Foundation (ASF), integrates big data platforms and tools by removing the complexity of
+Apache Wayang (Wayang, for short), an Apache Software Foundation top-level project,
+integrates big data platforms and tools by removing the complexity of
 worrying about low-level details. Interestingly, even if it was not designed for, Wayang could
 also serve as a scalable platform for federated learning: the Wayang community is starting to
 work on integrating federated learning capabilities. In a federated learning approach, Wayang
@@ -60,7 +60,7 @@ instead of details about data processors.
 
 ### Follow Wayang
 
-Apache Wayang is in an incubation phase and has a potential roadmap of implementations
+Apache Wayang is a top-level ASF project with a potential roadmap of implementations
 coming soon (including the federated learning aspect as well as an SQL interface and a novel
 data debugging functionality). If you want to hear or join the community, consult the link
 https://wayang.apache.org/community/ , join the mailing lists, contribute with new ideas,
