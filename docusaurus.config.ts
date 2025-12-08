@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Apache Wayang (incubating)',
-  tagline: 'Next-Gen Data Platform Integration',
+  tagline: 'Unifying Data Processing Engines for Cross-Platform Analytics',
   favicon: 'img/wayang-logo.jpg',
 
   // Set the production url of your site here
@@ -94,6 +94,11 @@ const config: Config = {
               to: '/blog/',
             },
             {
+              type: 'doc',
+              docId: 'community/resources',
+              label: 'Community Resources',
+            },
+            {
               type: 'docSidebar',
               sidebarId: 'communitySidebar',
               label: 'Project',
@@ -178,6 +183,10 @@ const config: Config = {
         {
           title: 'Documentation',
           items: [
+            {
+              label: 'What is Wayang?',
+              to: '/docs/introduction/about',
+            },
             {
               label: 'Install',
               to: '/docs/start/download',
