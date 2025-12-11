@@ -2,11 +2,54 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wayang.apache.org/blog</id>
     <title>Apache Wayang™ Blog</title>
-    <updated>2024-09-01T00:00:00.000Z</updated>
+    <updated>2025-12-11T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wayang.apache.org/blog"/>
     <subtitle>Apache Wayang™ Blog</subtitle>
     <icon>https://wayang.apache.org/img/wayang-logo.jpg</icon>
+    <entry>
+        <title type="html"><![CDATA[Apache Wayang Graduation]]></title>
+        <id>https://wayang.apache.org/blog/wayang-graduation</id>
+        <link href="https://wayang.apache.org/blog/wayang-graduation"/>
+        <updated>2025-12-11T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[The Apache Wayang community is proud to announce a major milestone in our journey: Apache Wayang has officially graduated from the Apache Incubator and is now a Top-Level Project (TLP) at the Apache Software Foundation (ASF)!]]></summary>
+        <content type="html"><![CDATA[<p>The Apache Wayang community is proud to announce a major milestone in our journey: <strong>Apache Wayang has officially graduated from the Apache Incubator and is now a Top-Level Project (TLP) at the Apache Software Foundation (ASF)</strong>!</p>
+<p>This graduation rewards the community-driven effort, research, innovation, and collaboration of many years. It reflects our shared commitment to open-source development and the growing importance of cross-platform data processing in the broader data ecosystem nowadays.
+Graduating as an Apache Top-Level Project is an important recognition of the project’s maturity and ensures that Apache Wayang is backed by the full support and oversight of the ASF, guaranteeing openness, meritocracy, and a sustainable development model for years to come.</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-is-apache-wayang">What Is Apache Wayang?<a href="https://wayang.apache.org/blog/wayang-graduation#what-is-apache-wayang" class="hash-link" aria-label="Direct link to What Is Apache Wayang?" title="Direct link to What Is Apache Wayang?">​</a></h2>
+<p>Apache Wayang (formerly known as Rheem) is a <strong>cross-platform data processing system</strong> designed to give developers and organizations a unified way to execute pipelines over multiple data processing engines—such as Apache Spark, Apache Flink, PostgreSQL, and more.</p>
+<p>Instead of forcing users to choose a single execution backend, Wayang:</p>
+<ul>
+<li><strong>Abstracts data processing engines</strong> through a unified API</li>
+<li><strong>Can automatically choose the best execution platform</strong> based on workload characteristics</li>
+<li><strong>Optimizes performance</strong> by distributing tasks across engines if necessary</li>
+<li><strong>Provides a flexible plugin architecture</strong> for integrating new platforms and optimizers</li>
+</ul>
+<p>In other words, Wayang enables interoperability across the diverse data landscape and empowers teams to focus on application logic and not infrastructure decisions.</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="thank-you-to-our-community">Thank You to Our Community<a href="https://wayang.apache.org/blog/wayang-graduation#thank-you-to-our-community" class="hash-link" aria-label="Direct link to Thank You to Our Community" title="Direct link to Thank You to Our Community">​</a></h2>
+<p>Apache Wayang wouldn’t exist without its community of developers, users, mentors, and advocates who contributed code, documentation, feedback, and support. A special thanks goes to our Incubator mentors, who helped guide the project through the Apache processes and best practices.
+Your contributions made this milestone possible, and we’re just getting started.</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="get-involved">Get Involved!<a href="https://wayang.apache.org/blog/wayang-graduation#get-involved" class="hash-link" aria-label="Direct link to Get Involved!" title="Direct link to Get Involved!">​</a></h2>
+<p>Whether you want to try Wayang for your next project, contribute code, write documentation, or share your ideas, your participation is welcome. Here’s how to get started:</p>
+<ul>
+<li>Explore the documentation</li>
+<li>Join our community mailing lists</li>
+<li>Contribute to discussions and development</li>
+<li>Try Wayang on your data workloads</li>
+</ul>
+<p>Welcome to Apache Wayang — where data platforms work together!</p>]]></content>
+        <author>
+            <name>Zoi Kaoudi</name>
+            <uri>https://github.com/zkaoudi</uri>
+        </author>
+        <category label="wayang" term="wayang"/>
+        <category label="ASF" term="ASF"/>
+        <category label="graduation" term="graduation"/>
+        <category label="TLP" term="TLP"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Apache Wayang Release Odysse]]></title>
         <id>https://wayang.apache.org/blog/wayang-release-odysse</id>
