@@ -8,9 +8,9 @@ This guide documents the steps to be followed when making a release.
 
 **Disclaimer**: Steps were taken mostly from [here](https://plc4x.apache.org/plc4x/latest/developers/release/release.html) and thus sentences may have been copied.
 
-**Convention**: The repository should be in a snapshot version of the next release. For instance, 1.0.1-SNAPSHOT means that the next release number should be 1.0.1.
+**Convention**: The repository should be in a snapshot version of the next release. For instance, 1.1.1-SNAPSHOT means that the next release number should be 1.1.1.
 
-The process in general is as follows. The release manager creates the right artifacts (source files) using maven commands. This forms a release candidate. Then the release candidate, which should be uploaded in the "development directory" of the apache svn server, goes for voting first in the PPMC and then in the general incubator list. Once accepted by the latter, the release can actually happen, where the artifacts are uploaded to the "release directory" of the apache svn server and populated in the maven repository. In the following, let's assume we are releasing version 1.0.0 and release candidate rc5.
+The process in general is as follows. The release manager creates the right artifacts (source files) using maven commands. This forms a release candidate. Then the release candidate, which should be uploaded in the "development directory" of the apache svn server, goes for voting in the dev list. It needs 3 or more positive binding votes (PMC members count as binding votes). Once accepted, the release can actually happen, where the artifacts are uploaded to the "release directory" of the apache svn server and populated in the maven repository. In the following, let's assume we are releasing version 1.0.0 and release candidate rc5.
 
 **If any Maven step should fail**:
 Please note that `mvn:release` commands eagerly commit directly to your working branch, if your command fails you may have to revert the last commit.
@@ -121,7 +121,7 @@ The following is about key management. Details are described [here](https://puls
 
     ``gpg --keyserver pgp.mit.edu --send-key $KEY_ID``
 
-15. Make sure your public key is appended in the KEYS file found in the release server [here](https://dist.apache.org/repos/dist/release/incubator/wayang/)
+15. Make sure your public key is appended in the KEYS file found in the release server [here](https://dist.apache.org/repos/dist/release/wayang/)
 
 =============================================
 
@@ -129,7 +129,7 @@ The following is about key management. Details are described [here](https://puls
 
 17. Run ``mvn clean release:perform`` (This step will ask for your apache credentials, if everything related to the keys is configured properly.)
 
-18. Go to: https://repository.apache.org, login, go to Staging Repositories and find the `orgapachewayang-{somenumber}` and close it with description "Apache Wayang (incubating) 1.0.0-rc5"
+18. Go to: https://repository.apache.org, login, go to Staging Repositories and find the `orgapachewayang-{somenumber}` and close it with description "Apache Wayang 1.0.0-rc5"
 
 19. Make a directory structure as described below and copy the corresponding source files from the directory target/checkout/target. The structure should be:
 ```
@@ -138,32 +138,71 @@ The following is about key management. Details are described [here](https://puls
 ./1.0.0/rc5
 ./1.0.0/rc5/README
 ./1.0.0/rc5/RELEASE_NOTES
-./1.0.0/rc5/apache-wayang-incubating-1.0.0-source-release.zip
-./1.0.0/rc5/apache-wayang-incubating-1.0.0-source-release.zip.asc
-./1.0.0/rc5/apache-wayang-incubating-1.0.0-source-release.zip.sha12
+./1.0.0/rc5/apache-wayang-1.0.0-source-release.zip
+./1.0.0/rc5/apache-wayang-1.0.0-source-release.zip.asc
+./1.0.0/rc5/apache-wayang-1.0.0-source-release.zip.sha12
 ```
 
-Make sure the KEYS file contains your public key. The KEYS file can be found in [https://dist.apache.org/repos/dist/release/incubator/wayang/](https://dist.apache.org/repos/dist/release/incubator/wayang/)
+Make sure the KEYS file contains your public key. The KEYS file can be found in [https://dist.apache.org/repos/dist/release/wayang/](https://dist.apache.org/repos/dist/release/wayang/)
 
 20. ``cd 1.0.0``
 
-    ``svn import rc5 https://dist.apache.org/repos/dist/dev/incubator/wayang/1.0.0/rc5 -m "Staging of rc5 of Wayang 1.0.0"``
+    ``svn import rc5 https://dist.apache.org/repos/dist/dev/wayang/1.0.0/rc5 -m "Staging of rc5 of Wayang 1.0.0"``
 
 21. Send the voting email to the dev list.
 
-22. If the voting passes, send the voting email to the general list.
+22. If the voting passes, the staged artifacts can be released. This is done by moving them inside the Apache SVN:
 
-23. Once the voting in the general list passes, the staged artifacts can be released. This is done by moving them inside the Apache SVN:
+    ``svn move -m "Release of Apache Wayang 1.0.0" https://dist.apache.org/repos/dist/dev/wayang/1.0.0/rc5 https://dist.apache.org/repos/dist/release/wayang/1.0.0``
 
-    ``svn move -m "Release of Apache Wayang (incubating) 1.0.0" https://dist.apache.org/repos/dist/dev/incubator/wayang/1.0.0/rc5 https://dist.apache.org/repos/dist/release/incubator/wayang/1.0.0``
+23. Then release the maven artifacts: In order to do this, the release manager logs into Nexus at https://repository.apache.org/, selects the staging repository and clicks on the Release button.
 
-24. Then release the maven artifacts: In order to do this, the release manager logs into Nexus at https://repository.apache.org/, selects the staging repository and clicks on the Release button.
+24. Bring all changes of the release branch to the main.
 
-25. Bring all changes of the release branch to the main.
+25. You can also remove 1.0.0 from the dev directory of the svn now that the release is out.
 
-26. You can also remove 1.0.0 from the dev directory of the svn now that the release is out.
-
-27. Create and upload the javadocs:\
+26. Create and upload the javadocs:\
     Go to the source code directory and run ``mvn compile javadoc:javadoc javadoc:aggregate``\
     The javadocs can then be found in the ``target`` directory\
-    Upload the javadocs in the website: https://github.com/apache/incubator-wayang-website/tree/main/static/docs/api/javadocs
+    Upload the javadocs in the website: https://github.com/apache/wayang-website/tree/main/static/docs/api/javadocs
+
+27. Update the download page with the new release [https://wayang.apache.org/docs/start/download](https://wayang.apache.org/docs/start/download)
+
+28. After waiting at least 24 hours to make sure the release is on the servers, announce the release to the world:
+
+```
+From:
+your apache email address
+To:
+announce@apache.org
+
+CC:
+dev@wayang.apache.org
+
+E-Mail Topic:
+[ANNOUNCE] Apache Wayang 1.0.0 released
+
+Message:
+The Apache Wayang team is pleased to announce the release of Apache Wayang 1.0.0
+
+Wayang is a cross-engine data processing system which (i) decouples 
+applications from underlying data processing engines, such as Apache Flink, 
+Apache Spark, databases, or ML systems, and (ii) automatically determines the 
+optimal combination of engines to execute a given data pipeline using an 
+optimizer.
+
+The current release contains:
+
+  *   1
+  *   2
+  *   3
+
+Visit the Apache Wayang website [1] for general information or
+the downloads page [2] for release notes and download information.
+
+Regards,
+The Apache Wayang team
+
+[1] http://wayang.apache.org
+[2] https://wayang.apache.org/docs/start/download
+```    
