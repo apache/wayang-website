@@ -166,4 +166,4 @@ Make sure the KEYS file contains your public key. The KEYS file can be found in 
 27. Create and upload the javadocs:\
     Go to the source code directory and run ``mvn compile javadoc:javadoc javadoc:aggregate``\
     The javadocs can then be found in the ``target`` directory\
-    Upload the javadocs in the website: https://github.com/apache/incubator-wayang-website/tree/main/static/docs/api/javadocs
+    Upload the javadocs in the website: https://github.com/apache/wayang-website/tree/main/static/docs/api/javadocs
