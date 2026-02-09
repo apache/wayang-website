@@ -8,12 +8,12 @@ This guide documents the steps to be followed when making a release.
 
 **Disclaimer**: Steps were taken mostly from [here](https://plc4x.apache.org/plc4x/latest/developers/release/release.html) and thus sentences may have been copied.
 
-**Convention**: The repository should be in a snapshot version of the next release. For instance, 1.1.1-SNAPSHOT means that the next release number should be 1.1.1.
+**NOTE**: The repository **must be in a snapshot version**.  Ideally in a number for the next release. For instance, 1.1.1-SNAPSHOT means that the next release number should be 1.1.1.
 
 The process in general is as follows. The release manager creates the right artifacts (source files) using maven commands. This forms a release candidate. Then the release candidate, which should be uploaded in the "development directory" of the apache svn server, goes for voting in the dev list. It needs 3 or more positive binding votes (PMC members count as binding votes). Once accepted, the release can actually happen, where the artifacts are uploaded to the "release directory" of the apache svn server and populated in the maven repository. In the following, let's assume we are releasing version 1.0.0 and release candidate rc5.
 
 **If any Maven step should fail**:
-Please note that `mvn:release` commands eagerly commit directly to your working branch, if your command fails you may have to revert the last commit.
+Please note that `mvn release` commands eagerly commit directly to your working branch, if your command fails you may have to revert the last commit.
 
 1. Clone the repo or pull latest changes:
 ``git pull`` 
@@ -23,24 +23,21 @@ Please note that `mvn:release` commands eagerly commit directly to your working 
    ``git checkout -b release-prep`` 
 - ``mvn release:branch -DbranchName=rel/1.0.0-rc5``
 
-
 3. Switch to branch:
 ``git checkout rel/1.0.0-rc5``
 
 4. Set upstream of branch:
 ``git push -u <remote_name> <branch_name>``
-
+If you've previously used git clone on https://github.com/apache/wayang/ <remote_name> should be origin.
+ 
 5. Update RELEASE_NOTES and check NOTICE to have the correct year
 
 6. Check if everything is working: 
     ``mvn clean install``
 
+7. Run ``mvn release:clean``
 
-7. Check if there are no SNAPSHOT references: ``find . -type f -name 'pom.xml' -exec grep -l "SNAPSHOT" {} \;``
-
-8. Run ``mvn release:clean``
-
-9. Modify the tag in the root pom.xml file to contain the right version with the rc number:
+8. Modify the tag in the root pom.xml file to contain the right version with the rc number:
 `` <tag>v1.0.0-rc5</tag>`` (2 places in the file)
 
 Now depending if it's the first time you do a release continue with the following steps, otherwise jump to step **16**.
@@ -126,6 +123,14 @@ The following is about key management. Details are described [here](https://puls
 =============================================
 
 16. Run ``mvn release:prepare`` (you can skip tests with -Darguments='-DskipTests=True, if you have done this before)
+
+If prompted: 
+``What is the SCM release tag or label for "Apache Wayang"? (wayang) v1.0.1-SNAPSHOT: : wayang``
+Add wayag-1.0.0
+
+If prompted:
+``What is the new development version for "Apache Wayang"? (wayang) 1.0.1-SNAPSHOT: :``
+Add the new development version *with SNAPSHOT*: eg., 1.0.1-SNAPSHOT
 
 17. Run ``mvn clean release:perform`` (This step will ask for your apache credentials, if everything related to the keys is configured properly.)
 
