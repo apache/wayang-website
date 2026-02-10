@@ -28,7 +28,7 @@ Please note that `mvn release` commands eagerly commit directly to your working 
 
 4. Set upstream of branch:
 ``git push -u <remote_name> <branch_name>``
-If you've previously used git clone on https://github.com/apache/wayang/ <remote_name> should be origin.
+If you've previously used git clone on https://github.com/apache/wayang/ remote name should be origin.
  
 5. Update RELEASE_NOTES and check NOTICE to have the correct year
 
