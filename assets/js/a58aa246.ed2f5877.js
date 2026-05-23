@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwayang_website=globalThis.webpackChunkwayang_website||[]).push([[7251],{9539(a){a.exports=JSON.parse('{"label":"TLP","permalink":"/blog/tags/tlp","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);

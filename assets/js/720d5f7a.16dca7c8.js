@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwayang_website=globalThis.webpackChunkwayang_website||[]).push([[9389],{9957(a){a.exports=JSON.parse('{"label":"spark","permalink":"/blog/tags/spark","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);
