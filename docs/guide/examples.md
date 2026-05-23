@@ -23,10 +23,10 @@ id: examples
 -->
 
 ## Requirements
-Apache Wayang is built upon the foundations of Java 11 and Scala 2.12, providing a robust and versatile platform for data processing applications. If you intend to build Wayang from source, you will also need to have Apache Maven, the popular build automation tool, installed on your system. Additionally, be mindful that some of the processing platforms supported by Wayang may have their own specific installation requirements.
+Apache Wayang is built upon the foundations of Java 11 and Scala 2.12, providing a robust and versatile platform for data processing applications. If you intend to build Wayang from source, you wi[...]
 
 ### Get Wayang
-Apache Wayang is readily available through Maven Central, facilitating seamless integration into your development workflow. For instance, to utilize Wayang in your Maven-based project, simply add the following dependency to your project's POM file:
+Apache Wayang is readily available through Maven Central, facilitating seamless integration into your development workflow. For instance, to utilize Wayang in your Maven-based project, simply add [...]
 ```xml
 <dependency>
   <groupId>org.apache.wayang</groupId>
@@ -69,7 +69,7 @@ If you need to rebuild Wayang, e.g., to use a different Scala version, you can s
     ```
 
 ### Configure Wayang
-To enable Apache Wayang's smooth operation, you need to equip it with details about your processing platforms' capabilities and how to interact with them. A default configuration is available for initial testing, but creating a properties file is generally preferable for fine-tuning the configuration to suit your specific requirements. To harness this personalized configuration effortlessly, launch your application via
+To enable Apache Wayang's smooth operation, you need to equip it with details about your processing platforms' capabilities and how to interact with them. A default configuration is available for [...]
 ```shell
 $ java -Dwayang.configuration=url://to/my/wayang.properties ...
 ```
@@ -79,7 +79,7 @@ Essential configuration settings:
     * `wayang.core.log.enabled (= true)`: whether to log execution statistics to allow learning better cardinality and cost estimators for the optimizer
     * `wayang.core.log.executions (= ~/.wayang/executions.json)` where to log execution times of operator groups
     * `wayang.core.log.cardinalities (= ~/.wayang/cardinalities.json)` where to log cardinality measurements
-    * `wayang.core.optimizer.instrumentation (= org.apache.wayang.core.profiling.OutboundInstrumentationStrategy)`: where to measure cardinalities in Wayang plans; other options are `org.apache.wayang.core.profiling.NoInstrumentationStrategy` and `org.apache.wayang.core.profiling.FullInstrumentationStrategy`
+    * `wayang.core.optimizer.instrumentation (= org.apache.wayang.core.profiling.OutboundInstrumentationStrategy)`: where to measure cardinalities in Wayang plans; other options are `org.apache.wa[...]
     * `wayang.core.optimizer.reoptimize (= false)`: whether to progressively optimize Wayang plans
     * `wayang.basic.tempdir (= file:///tmp)`: where to store temporary files, in particular for inter-platform communication
 * Java Streams
@@ -109,10 +109,10 @@ Essential configuration settings:
     * `wayang.postgres.cpu.mhz (= 2700)`: clock frequency of processor PostgreSQL runs on in MHz
     * `wayang.postgres.cpu.cores (= 2)`: number of cores PostgreSQL runs on
 
-To effectively define your applications with Apache Wayang, utilize its Scala or Java API, conveniently found within the `wayang-api` module. For clear illustrations, refer to the provided examples below.
+To effectively define your applications with Apache Wayang, utilize its Scala or Java API, conveniently found within the `wayang-api` module. For clear illustrations, refer to the provided exampl[...]
 
 ## Cost Functions
-Wayang provides a utility to learn cost functions from historical execution data. Specifically, Wayang can learn configurations for load profile estimators (that estimate CPU load, disk load etc.) for both operators and UDFs, as long as the configuration provides a template for those estimators.
+Wayang provides a utility to learn cost functions from historical execution data. Specifically, Wayang can learn configurations for load profile estimators (that estimate CPU load, disk load etc.[...]
    
 As an example, the `JavaMapOperator` draws its load profile estimator configuration via the configuration key `wayang.java.map.load`.
 Now, it is possible to specify a load profile estimator template in the configuration under the key `<original key>.template`, e.g.:
@@ -122,7 +122,7 @@ wayang.java.map.load.template = {\
   "cpu":"?*in0"\
 }
 ```
-This template encapsulates a load profile estimator that requires at minimum one input cardinality and one output cardinality. Furthermore, it simulates CPU load by assuming a direct relationship with the input cardinality. However, more complex functions are possible.
+This template encapsulates a load profile estimator that requires at minimum one input cardinality and one output cardinality. Furthermore, it simulates CPU load by assuming a direct relationship[...]
    
 In particular, you can use
 * the variables `in0`, `in1`, ... and `out0`, `out1`, ... to incorporate the input and output cardinalities, respectively;
@@ -131,12 +131,12 @@ In particular, you can use
 * the functions `min(x0, x1, ...))`, `max(x0, x1, ...)`, `abs(x)`, `log(x, base)`, `ln(x)`, `ld(x)`;
 * and the constants `e` and `pi`.
 
-While Apache Wayang provides templates for all execution operators, you will need to explicitly define your user-defined functions (UDFs) by specifying their cost functions, which are based on configuration parameters. This involves creating an initial specification and template for each UDF.
+While Apache Wayang provides templates for all execution operators, you will need to explicitly define your user-defined functions (UDFs) by specifying their cost functions, which are based on co[...]
 As soon as execution data has been collected, you can initiate:
 ```shell
 java ... org.apache.wayang.profiler.ga.GeneticOptimizerApp [configuration URL [execution log]]
 ```
-This tool will attempt to determine suitable values for the question marks (`?`) within the load profile estimator templates, aligning them with the collected execution data and pre-defined configuration entries for the load profile estimators. These optimized values can then be directly incorporated into your configuration.
+This tool will attempt to determine suitable values for the question marks (`?`) within the load profile estimator templates, aligning them with the collected execution data and pre-defined confi[...]
 
 ## Examples
 
