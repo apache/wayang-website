@@ -1,6 +1,6 @@
 ---
 title: How to build Wayang
-sidebar_position: 1
+sidebar_position: 2
 id: installation
 ---
 

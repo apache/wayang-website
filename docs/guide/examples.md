@@ -1,7 +1,7 @@
 ---
-title: Getting started
-sidebar_position: 2
-id: getting-started
+title: Installation and Examples
+sidebar_position: 10
+id: examples
 ---
 <!--
 
