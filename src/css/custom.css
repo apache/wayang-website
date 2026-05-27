@@ -66,3 +66,13 @@
 .footer__links {
   text-align: center;
 }
+
+/* Blog author avatars are hidden intentionally to avoid relying on external
+   profile images across a large Apache contributor set. */
+.blog-wrapper .avatar__photo-link {
+  display: none;
+}
+
+.blog-wrapper .avatar__intro {
+  margin-left: 0;
+}
