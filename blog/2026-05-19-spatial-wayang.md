@@ -2,6 +2,7 @@
 slug: spatial-wayang
 title: Bringing Spatial Data Processing to Apache Wayang
 authors: [max.speer, anton.persitzky, felix.treykorn]
+tags: [wayang, spatial]
 ---
 
 # Bringing Spatial Data Processing to Apache Wayang
