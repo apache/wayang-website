@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunkwayang_website=globalThis.webpackChunkwayang_website||[]).push([[2795],{4135(a){a.exports=JSON.parse('{"label":"ML","permalink":"/blog/tags/ml","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);

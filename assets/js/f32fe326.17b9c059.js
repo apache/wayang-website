@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunkwayang_website=globalThis.webpackChunkwayang_website||[]).push([[818],{5320(a){a.exports=JSON.parse('{"label":"ai","permalink":"/blog/tags/ai","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);

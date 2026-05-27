@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunkwayang_website=globalThis.webpackChunkwayang_website||[]).push([[6730],{9171(a){a.exports=JSON.parse('{"label":"presto","permalink":"/blog/tags/presto","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);
