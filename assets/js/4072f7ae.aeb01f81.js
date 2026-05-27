@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwayang_website=globalThis.webpackChunkwayang_website||[]).push([[79],{872(a){a.exports=JSON.parse('{"label":"spatial","permalink":"/blog/tags/spatial","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);
