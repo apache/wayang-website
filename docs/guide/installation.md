@@ -1,6 +1,6 @@
 ---
 title: How to build Wayang
-sidebar_position: 1
+sidebar_position: 2
 id: installation
 ---
 
@@ -59,8 +59,8 @@ echo "export PATH=${PATH}:${WAYANG_HOME}/bin" >> ~/.zshrc
 source ~/.zshrc
 ```
 ### Others
-- You need to install Apache Spark version 3 or higher. Don’t forget to set the `SPARK_HOME` environment variable.
-- You need to install Apache Hadoop version 3 or higher. Don’t forget to set the `HADOOP_HOME` environment variable.
+- You need to install Apache Spark version 3 or higher. Don't forget to set the `SPARK_HOME` environment variable.
+- You need to install Apache Hadoop version 3 or higher. Don't forget to set the `HADOOP_HOME` environment variable.
 
 ## Run the program
 

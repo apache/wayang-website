@@ -1,0 +1,332 @@
+---
+title: Getting started
+sidebar_position: 1
+description: Write a data pipeline once and let Apache Wayang run it on the best available engine — your laptop, Spark, Flink, or a database.
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Getting Started
+
+**Write your data pipeline once. Run it anywhere.**
+
+You write your pipeline against a single API, then decide how it runs. Point it at one
+engine and it runs there — or hand Wayang's cost-based optimizer the choice and let it pick
+the best platform for each step across your laptop, Apache Spark, Apache Flink, or a
+database, even splitting a single job across several. Either way, when your data outgrows
+one machine you don't rewrite anything — you just make another engine available.
+
+This page gets you from zero to a running cross-platform pipeline in a few minutes.
+
+---
+
+## How it works
+
+Most data tools lock you into one engine. Pick Spark, and your code is Spark code forever.
+Outgrow it, or need a database in the mix, and you rewrite.
+
+Wayang sits one level up. You write a pipeline against Wayang's API and register the engines
+you *have* — then it's your call. Want control? Register one engine and it runs there. Want
+it handled? Register several and let Wayang's cost-based optimizer pick the best one for each
+step:
+
+![A single pipeline, written once, feeds the Wayang optimizer, which routes each step to the best available engine — Local, Spark, Flink, Postgres, and others.](/img/wayang-architecture.svg)
+
+Same code on your laptop and on a 100-node cluster.
+
+---
+
+## Quickstart
+
+We'll run a word count locally first — no cluster, nothing to install on a server — then
+make Spark available with a one-line change. The pipeline itself never changes; only the
+set of engines you register does.
+
+### 1. Run locally
+
+<Tabs groupId="wayang-language">
+<TabItem value="java" label="Java" default>
+
+```java
+import org.apache.wayang.core.api.Configuration;
+import org.apache.wayang.core.api.WayangContext;
+import org.apache.wayang.api.JavaPlanBuilder;
+import org.apache.wayang.basic.data.Tuple2;
+import org.apache.wayang.java.Java;
+import java.util.Arrays;
+
+public class WordCount {
+    public static void main(String[] args) {
+        // Register ONLY the local Java engine → runs on your machine, no cluster needed.
+        WayangContext wayang = new WayangContext(new Configuration())
+                .withPlugin(Java.basicPlugin());
+
+        new JavaPlanBuilder(wayang)
+                .withJobName("WordCount")
+                .withUdfJarOf(WordCount.class)
+                .readTextFile("file:///path/to/input.txt")
+                .flatMap(line -> Arrays.asList(line.split("\\W+")))
+                .filter(word -> !word.isEmpty())
+                .map(word -> new Tuple2<>(word.toLowerCase(), 1))
+                .reduceByKey(Tuple2::getField0,
+                             (t1, t2) -> new Tuple2<>(t1.getField0(), t1.getField1() + t2.getField1()))
+                .writeTextFile("file:///path/to/output.txt", t -> t.getField0() + ": " + t.getField1());
+    }
+}
+```
+
+</TabItem>
+<TabItem value="scala" label="Scala">
+
+```scala
+import org.apache.wayang.api._
+import org.apache.wayang.core.api.{Configuration, WayangContext}
+import org.apache.wayang.java.Java
+
+object WordCount {
+  def main(args: Array[String]): Unit = {
+    // Register ONLY the local Java engine → runs on your machine, no cluster needed.
+    val wayangCtx = new WayangContext(new Configuration)
+    wayangCtx.register(Java.basicPlugin)
+
+    new PlanBuilder(wayangCtx)
+      .withJobName("WordCount")
+      .withUdfJarsOf(this.getClass)
+      .readTextFile("file:///path/to/input.txt")
+      .flatMap(_.split("\\W+"))
+      .filter(_.nonEmpty)
+      .map(word => (word.toLowerCase, 1))
+      .reduceByKey(_._1, (c1, c2) => (c1._1, c1._2 + c2._2))
+      .writeTextFile("file:///path/to/output.txt", t => s"${t._1}: ${t._2}")
+  }
+}
+```
+
+</TabItem>
+<TabItem value="python" label="Python">
+
+```python
+from pywy.dataquanta import WayangContext
+from pywy.platforms.java import JavaPlugin
+
+# Register ONLY the local Java engine → runs on your machine, no cluster needed.
+ctx = WayangContext().register({JavaPlugin})
+
+(ctx
+    .textfile("file:///path/to/input.txt")
+    .flatmap(lambda line: line.split())
+    .filter(lambda word: word.strip() != "")
+    .map(lambda word: (word.lower(), 1))
+    .reduce_by_key(lambda t: t[0], lambda t1, t2: (t1[0], int(t1[1]) + int(t2[1])))
+    .store_textfile("file:///path/to/output.txt"))
+```
+
+</TabItem>
+</Tabs>
+
+It executes locally. Good for development, tests, and small data.
+
+### 2. Run it on Spark
+
+Now run the *exact same pipeline* on Spark instead of locally. You don't touch the pipeline —
+you change which platform you register: comment out Java and register Spark.
+
+<Tabs groupId="wayang-language">
+<TabItem value="java" label="Java" default>
+
+```java
+import org.apache.wayang.spark.Spark;               // ← swap the import
+
+// Same pipeline as before — only the registered platform changed.
+WayangContext wayang = new WayangContext(new Configuration())
+        // .withPlugin(Java.basicPlugin())           // ← comment out the local engine
+        .withPlugin(Spark.basicPlugin());            // ← register Spark instead
+```
+
+</TabItem>
+<TabItem value="scala" label="Scala">
+
+```scala
+import org.apache.wayang.spark.Spark              // ← swap the import
+
+// Same pipeline as before — only the registered platform changed.
+val wayangCtx = new WayangContext(new Configuration)
+// wayangCtx.register(Java.basicPlugin)            // ← comment out the local engine
+wayangCtx.register(Spark.basicPlugin)              // ← register Spark instead
+```
+
+</TabItem>
+<TabItem value="python" label="Python">
+
+```python
+from pywy.platforms.spark import SparkPlugin       // ← use Spark instead of Java
+
+# Same pipeline as before — only the registered platform changed.
+ctx = WayangContext().register({SparkPlugin})
+```
+
+</TabItem>
+</Tabs>
+
+Run it again. The same pipeline now executes on Spark — you changed *where* it runs without
+changing *what* it does. Switch to Flink or any other supported platform the same way: swap
+the import and the registered plugin.
+
+
+### 3. Register both and let the optimizer choose
+
+This is the point of Wayang. In practice you don't have to pick a platform at all: you register every
+engine you have and let the optimizer choose the best one for each step — even
+splitting a single job across engines. The pipeline is still the same; you just stop deciding
+where it runs.
+
+<Tabs groupId="wayang-language">
+<TabItem value="java" label="Java" default>
+
+```java
+// Register BOTH platforms — Wayang's optimizer decides which to use per step.
+WayangContext wayang = new WayangContext(new Configuration())
+        .withPlugin(Java.basicPlugin())
+        .withPlugin(Spark.basicPlugin());
+```
+
+</TabItem>
+<TabItem value="scala" label="Scala">
+
+```scala
+// Register BOTH platforms — Wayang's optimizer decides which to use per step.
+val wayangCtx = new WayangContext(new Configuration)
+wayangCtx.register(Java.basicPlugin)
+wayangCtx.register(Spark.basicPlugin)
+```
+
+</TabItem>
+<TabItem value="python" label="Python">
+
+```python
+# Register BOTH platforms — Wayang's optimizer decides which to use per step.
+ctx = WayangContext().register({JavaPlugin, SparkPlugin})
+```
+
+</TabItem>
+</Tabs>
+
+Now Wayang owns the placement decision. For each operator it estimates the cost on every
+registered platform and picks the cheapest — keeping a small job entirely local, pushing a
+large one onto Spark, or mixing both within the same job as the data demands. You wrote the
+pipeline once in step 1; steps 2 and 3 only changed which engines were on the table.
+
+> On a tiny input you'll see it keep everything local (that's the optimizer working
+> correctly, not ignoring Spark). The cross-platform decisions show up once the data is big
+> enough for them to pay off. Read [How Wayang chooses a platform](https://wayang.apache.org/docs/introduction/about) for what
+> drives those choices.
+
+---
+
+## Install
+
+Replace WAYANG_VERSION below with [latest maven release](https://mvnrepository.com/artifact/org.apache.wayang).
+
+<Tabs groupId="wayang-language">
+<TabItem value="java" label="Java/Scala" default>
+
+Maven:
+
+```xml
+<dependency>
+  <groupId>org.apache.wayang</groupId>
+  <artifactId>wayang-core</artifactId>
+  <version>WAYANG_VERSION</version>
+</dependency>
+<dependency>
+  <groupId>org.apache.wayang</groupId>
+  <artifactId>wayang-basic</artifactId>
+  <version>WAYANG_VERSION</version>
+</dependency>
+<dependency>
+  <groupId>org.apache.wayang</groupId>
+  <artifactId>wayang-api-scala-java</artifactId>
+  <version>WAYANG_VERSION</version>
+</dependency>
+<!-- add one artifact per engine you want available -->
+<dependency>
+  <groupId>org.apache.wayang</groupId>
+  <artifactId>wayang-java</artifactId>
+  <version>WAYANG_VERSION</version>
+</dependency>
+<dependency>
+  <groupId>org.apache.wayang</groupId>
+  <artifactId>wayang-spark</artifactId>
+  <version>WAYANG_VERSION</version>
+</dependency>
+```
+
+Or build from source (always works, no published artifact needed). Just make sure to use the [latest snapshot version](https://github.com/apache/wayang/blob/main/pom.xml):
+
+```bash
+git clone https://github.com/apache/wayang.git
+cd wayang
+./mvnw clean install -DskipTests
+```
+
+To run on Spark, you'll need Apache Spark 3+ on your `PATH`.
+
+</TabItem>
+<TabItem value="python" label="Python">
+
+:::note
+Getting Python running today is involved — you build both the Python
+package and the Wayang backend from source and start a local server before any pipeline
+runs. A simpler one-command path (a prebuilt Docker image) is something the project wants to
+offer, and help is welcome.
+:::
+
+pywayang has no PyPI release yet, and it's a client that talks to a running Wayang REST
+API — so setup is two parts: install the Python package, then start the Wayang backend.
+
+**1. Build and install the Python package** (from the repo root):
+
+```bash
+cd python
+pip install --upgrade build        # may also require the python3-venv system package
+python3 -m build
+python3 -m pip install dist/pywy-WAYANG_VERSION.tar.gz
+```
+
+**2. Build the Wayang assembly and start the REST API** (from the repo root):
+
+```bash
+./mvnw clean package -pl :wayang-assembly -Pdistribution
+cd wayang-assembly/target/
+tar -xf apache-wayang-assembly-WAYANG_VERSION-dist.tar.gz
+cd wayang-WAYANG_VERSION
+./bin/wayang-submit org.apache.wayang.api.json.Main &
+```
+
+Before packaging, set the Python worker paths in
+`wayang-api/wayang-api-python/src/main/resources/wayang-api-python-defaults.properties`
+— the location of `python/src/pywy/execution/worker.py`, your `python3` command, and your
+site-packages directory. You'll also need a Java 11+ runtime available.
+
+With the REST API running, the Python examples above will execute. See the
+[pywayang README](https://github.com/apache/wayang/tree/main/python) for full details.
+
+</TabItem>
+</Tabs>
+
+---
+
+<!--
+
+## What to read next
+
+- **[How Wayang chooses a platform](./examples/)** — how the optimizer decides where each step runs.
+- **[Supported platforms](./api-documentation/)** — Spark, Flink, Java streams, Postgres, and more.
+- **[Add your own platform](./examples/)** — Wayang's plugin architecture lets you teach it new engines.
+- **[Join the community](https://wayang.apache.org/docs/community/mailinglist)** — mailing lists, where questions get answered and contributors start.
+---
+-->
+
+*Stuck on the first run? That's a documentation bug, and we want to know.
+Ask on the [user mailing list](https://wayang.apache.org/docs/community/mailinglist).*
