@@ -169,7 +169,8 @@ Make sure the KEYS file contains your public key. The KEYS file can be found in 
 26. Create and upload the javadocs:\
     Go to the source code directory and run ``mvn compile javadoc:javadoc javadoc:aggregate``\
     The javadocs can then be found in the ``target`` directory\
-    Upload the javadocs in the website: https://github.com/apache/wayang-website/tree/main/static/docs/api/javadocs
+    Upload the javadocs in the website: https://github.com/apache/wayang-website/tree/main/static/docs/api/javadocs\
+    Update the latest Javadocs link in `docs/guide/api-documentation.md` to point to the new release.
 
 27. Update the download page with the new release [https://wayang.apache.org/docs/start/download](https://wayang.apache.org/docs/start/download)
 
