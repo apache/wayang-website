@@ -26,13 +26,13 @@ id: installation
 
 ## Clone repository
 ```shell
-git clone https://github.com/apache/incubator-wayang.git
+git clone https://github.com/apache/wayang.git
 ```
 
 ## Create binaries
 Running following commands to build Wayang and generate the tar.gz
 ```shell
-cd incubator-wayang
+cd wayang
 ./mvnw clean install -DskipTests
 ./mvnw clean package -pl :wayang-assembly -Pdistribution
 ```
