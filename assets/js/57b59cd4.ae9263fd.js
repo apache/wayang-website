@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwayang_website||=[]).push([[8880],{2985(t,n,s){s.r(n),s.d(n,{default:()=>e});var u=s(612),a=s(4848);function e(){return(0,a.jsx)(u.rd,{to:"/docs/community/join"})}}}]);
