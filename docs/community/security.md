@@ -1,3 +1,7 @@
+---
+sidebar_position: 11
+---
+
 # Wayang Security
 
 The Apache Software Foundation (ASF) and the Apache Wayang community take security very seriously. Apache Wayang specifically provides robust security features and actively addresses concerns around potential vulnerabilities. If you have discovered a vulnerability or have concerns regarding Apache Wayang security, please immediately contact the security team via email at [security@wayang.apache.org](mailto:security@wayang.apache.org).

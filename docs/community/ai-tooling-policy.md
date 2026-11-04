@@ -1,3 +1,7 @@
+---
+sidebar_position: 9
+---
+
 # Guidelines for AI-assisted Contributions
 
 The Apache Wayang community welcomes the use of AI and generative tooling as part of the contribution process, provided contributors follow the guidelines below. These guidelines align with the [ASF Generative Tooling Guidance](https://www.apache.org/legal/generative-tooling.html).

@@ -1,6 +1,6 @@
 ---
 title: Maturity Model
-sidebar_position: 7
+sidebar_position: 10
 id: maturity
 ---
 
