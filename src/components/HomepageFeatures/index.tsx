@@ -1,73 +1,76 @@
-import clsx from 'clsx';
+import type {JSX} from 'react';
 import Heading from '@theme/Heading';
+import Link from '@docusaurus/Link';
 import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
   Svg: React.ComponentType<React.ComponentProps<'svg'>>;
-  description: JSX.Element;
+  description: string;
+  to: string;
+  linkLabel: string;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Platform independence ',
+    title: 'Platform independence',
+    to: '/docs/introduction/features',
+    linkLabel: 'Explore the features',
     Svg: require('@site/static/img/svg/agnostic.svg').default,
-    description: (
-      <>
-        Change one line of code and move applications across different data processing engines
-      </>
-    ),
+    description:
+      'Write your application against a common API. Choose the processing engines that fit your data, infrastructure, and workload as your needs evolve.',
   },
   {
-    title: 'Cross-platform task execution',
+    title: 'Cross-platform execution',
+    to: '/docs/guide/usage-examples',
+    linkLabel: 'See pipeline examples',
     Svg: require('@site/static/img/svg/api.svg').default,
-    description: (
-      <>
-        Mix Apache Spark, PostgreSQL, Apache Flink, Java Streams, JDBC and more in one pipeline 
-      </>
-    ),
+    description:
+      'Combine Spark, Flink, PostgreSQL, and Java Streams in one pipeline. Run different steps on different engines without stitching together separate applications by hand.',
   },
   {
-    title: 'Automated platform selection',
+    title: 'Cost-based optimization',
+    to: '/docs/guide/optimizer',
+    linkLabel: 'Understand the optimizer',
     Svg: require('@site/static/img/svg/speed.svg').default,
-    description: (
-      <>
-      Let the optimizer choose the best platform combination for each task based on cost models to improve performance
-      </>
-    ),
+    description:
+      'Let Wayang compare execution plans across your available engines. Its cost model considers processing and data movement to select a plan for your workload.',
   },
   {
     title: 'Extensible architecture',
+    to: '/docs/guide/adding-operators',
+    linkLabel: 'Learn to add operators',
     Svg: require('@site/static/img/svg/extensibility.svg').default,
-    description: (
-      <>
-      Need a new platform or operator? Extend Wayang easily with few lines of code
-      </>
-    ),
+    description:
+      'Adapt Wayang to your own processing needs. Add operators and platform integrations through its plugin architecture while keeping application logic separate from engine details.',
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, Svg, description, to, linkLabel}: FeatureItem) {
   return (
-    <div className={clsx('col col--3')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+    <article className={styles.card}>
+      <div className={styles.icon}>
+        <Svg className={styles.featureSvg} aria-hidden="true" focusable="false" />
       </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
-      </div>
-    </div>
+      <Heading as="h3" className={styles.title}>{title}</Heading>
+      <p className={styles.description}>{description}</p>
+      <Link className={styles.link} to={to}>
+        {linkLabel} <span aria-hidden="true">→</span>
+      </Link>
+    </article>
   );
 }
 
 export default function HomepageFeatures(): JSX.Element {
   return (
-    <section className={styles.features}>
+    <section className={styles.features} aria-labelledby="wayang-capabilities">
       <div className="container">
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
+        <Heading as="h2" id="wayang-capabilities" className={styles.sectionTitle}>
+          One pipeline across your data engines
+        </Heading>
+        <div className={styles.grid}>
+          {FeatureList.map((props) => (
+            <Feature key={props.title} {...props} />
           ))}
         </div>
       </div>

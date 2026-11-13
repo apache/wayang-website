@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import {useMemo} from 'react';
+import {useMemo, type JSX} from 'react';
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -118,6 +118,38 @@ export default function Home(): JSX.Element {
         <HomepageHeader />
         <main>
           <HomepageFeatures />
+          <section className="container padding-vert--xl" aria-labelledby="explore-wayang">
+            <Heading as="h2" id="explore-wayang">Explore Apache Wayang</Heading>
+            <div className="row">
+              <div className="col col--4 margin-bottom--lg">
+                <Heading as="h3">Build a pipeline</Heading>
+                <p>Start with working examples, explore the APIs, and review performance results.</p>
+                <ul>
+                  <li><Link to="/docs/guide/usage-examples">Usage examples</Link></li>
+                  <li><Link to="/docs/guide/api-documentation">API documentation</Link></li>
+                  <li><Link to="/docs/introduction/benchmark">Wayang benchmarks</Link></li>
+                </ul>
+              </div>
+              <div className="col col--4 margin-bottom--lg">
+                <Heading as="h3">Learn from the community</Heading>
+                <p>Read project news, technical articles, and experiences from Wayang users.</p>
+                <ul>
+                  <li><Link to="/blog">Apache Wayang blog</Link></li>
+                  <li><Link to="/docs/community/resources">Articles and community resources</Link></li>
+                  <li><Link to="/docs/community/join">Join the Wayang community</Link></li>
+                </ul>
+              </div>
+              <div className="col col--4 margin-bottom--lg">
+                <Heading as="h3">Find support</Heading>
+                <p>Ask the community for help, find commercial providers, or report a security issue.</p>
+                <ul>
+                  <li><Link to="/docs/community/mailinglist">Community support and mailing lists</Link></li>
+                  <li><Link to="/docs/community/commercial-support">Commercial support and integration</Link></li>
+                  <li><Link to="/docs/community/security">Security and vulnerability reporting</Link></li>
+                </ul>
+              </div>
+            </div>
+          </section>
         </main>
       </Layout>
     </>

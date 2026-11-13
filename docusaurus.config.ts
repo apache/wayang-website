@@ -6,6 +6,9 @@ const config: Config = {
 title: 'Apache Wayang™',
   tagline: 'Unifying Data Processing Engines for Cross-Platform Analytics',
   favicon: 'img/favicon.ico',
+  headTags: [
+    {tagName: 'link', attributes: {rel: 'describedby', href: '/llms.txt', type: 'text/plain'}},
+  ],
 
   // Set the production url of your site here
   url: 'https://wayang.apache.org/',
@@ -58,11 +61,11 @@ title: 'Apache Wayang™',
   themeConfig: {
     // Replace with your project's social card
     announcementBar: {
-      id: 'support_us',
+      id: 'support_wayang_github',
       content:
-        '⭐️ If you like Apache Wayang, give it a star on <a target="_blank" href="https://github.com/apache/incubator-wayang">GitHub</a>! ⭐ ',
-      backgroundColor: '#fafbfc',
-      textColor: '#091E42',
+        '<span class="wayang-star-message">Support Apache Wayang — <a target="_blank" rel="noopener noreferrer" href="https://github.com/apache/wayang">Star us on GitHub <span aria-hidden="true">★</span></a></span>',
+      backgroundColor: '#fff3df',
+      textColor: '#292d39',
       isCloseable: true,
     },
     navbar: {
@@ -72,12 +75,52 @@ title: 'Apache Wayang™',
         src: 'img/wayang.png',
       },
       items: [
-        // {
-        //   type: 'docSidebar',
-        //   sidebarId: 'tutorialSidebar',
-        //   position: 'left',
-        //   label: 'Tutorial',
-        // },
+        {
+          type: 'dropdown',
+          label: 'About Wayang',
+          position: 'right',
+          items: [
+            {label: 'What is Apache Wayang?', to: '/docs/introduction/about'},
+            {label: 'Features', to: '/docs/introduction/features'},
+            {label: 'Benchmarks', to: '/docs/introduction/benchmark'},
+          ],
+        },
+        {
+          type: 'dropdown',
+          label: 'Documentation',
+          position: 'right',
+          items: [
+            {label: 'Getting Started', to: '/docs/guide/getting-started'},
+            {label: 'Usage Examples', to: '/docs/guide/usage-examples'},
+            {label: 'API Documentation', to: '/docs/guide/api-documentation'},
+            {label: 'Data Processing Optimizer', to: '/docs/guide/optimizer'},
+            {label: 'Build from Source', to: '/docs/guide/installation'},
+            {type: 'docSidebar', sidebarId: 'guideSidebar', label: 'All Documentation'},
+          ],
+        },
+        {
+          type: 'dropdown',
+          label: 'Community',
+          position: 'right',
+          items: [
+            {label: 'Join the Community', to: '/docs/community/join'},
+            {label: 'How to Contribute', to: '/docs/community/contribute'},
+            {label: 'Team', to: '/docs/community/team'},
+            {label: 'Blog', to: '/blog'},
+            {label: 'Articles & Resources', to: '/docs/community/resources'},
+            {type: 'docSidebar', sidebarId: 'communitySidebar', label: 'All Community Pages'},
+          ],
+        },
+        {
+          type: 'dropdown',
+          label: 'Support',
+          position: 'right',
+          items: [
+            {label: 'Community Support', to: '/docs/community/mailinglist'},
+            {label: 'Commercial Support', to: '/docs/community/commercial-support'},
+            {label: 'Security', to: '/docs/community/security'},
+          ],
+        },
         {
           type: 'docSidebar',
           sidebarId: 'startSidebar',
@@ -85,26 +128,8 @@ title: 'Apache Wayang™',
           label: 'Download',
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'introductionSidebar',
-          position: 'right',
-          label: 'About',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'guideSidebar',
-          position: 'right',
-          label: 'Developers',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'communitySidebar',
-          position: 'right',
-          label: 'Community',
-        },
-        {
           type: 'dropdown',
-          label: 'ASF',
+          label: 'Apache Software Foundation',
           position: 'right',
           items: [
             {
@@ -164,6 +189,10 @@ title: 'Apache Wayang™',
               href: 'https://lists.apache.org/list.html?dev@wayang.apache.org',
             },
             {
+              label: 'Commercial Support',
+              to: '/docs/community/commercial-support',
+            },
+            {
               label: 'YouTube',
               href: 'https://www.youtube.com/@apachewayang',
             },
@@ -221,15 +250,15 @@ title: 'Apache Wayang™',
         },
       ],
       logo: {
-        width: 200,
+        width: 160,
         src: "/img/asf-logo.svg",
         href: "https://www.apache.org/",
-        alt: "ASF logo"
+        alt: "The ASF — Apache Software Foundation"
       },
       copyright: `<div>
       <p>
         Copyright © ${new Date().getFullYear()} The Apache Software Foundation, Licensed under the Apache License, Version 2.0. <br/>
-        Apache Wayang, Wayang, Apache, the Apache feather logo, and the Apache Wayang project logo are either registered trademarks or trademarks of The Apache Software Foundation in the United States and other countries. All other marks mentioned may be trademarks or registered trademarks of their respective owners.
+        Apache Wayang, Wayang, Apache, the ASF logo, and the Apache Wayang project logo are either registered trademarks or trademarks of The Apache Software Foundation in the United States and other countries. All other marks mentioned may be trademarks or registered trademarks of their respective owners.
       </p>
       </div>`,
     },

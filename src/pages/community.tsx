@@ -15,6 +15,7 @@
  * limitations under the License.
  */
 
+import type {JSX} from 'react';
 import {Redirect} from '@docusaurus/router';
 
 // Short URL (e.g. linked from CONTRIBUTING.md) for the Join the Community page.
