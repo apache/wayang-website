@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
 title: 'Apache Wayang™',
   tagline: 'Unifying Data Processing Engines for Cross-Platform Analytics',
-  favicon: 'img/wayang-logo.jpg',
+  favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
   url: 'https://wayang.apache.org/',
