@@ -1,0 +1,306 @@
+---
+id: join
+title: Join the Community
+sidebar_label: Join the Community
+sidebar_position: 0
+description: How to connect with the Apache Wayang community, ask questions, and start contributing to the project.
+---
+
+{/*
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+*/}
+
+import Link from '@docusaurus/Link';
+import {CardGrid, Steps, QuickActions, Callout} from '@site/src/components/Community';
+
+Apache Wayang is built in the open by researchers, engineers, and students from universities and companies around the world. Whether you want to ask a question, report a bug, share how you use Wayang, or write code, you are welcome here, and no contribution is too small.
+
+**You don't need to write code to contribute.** Improving documentation, spreading the word on social media, giving talks, answering questions, and testing releases are all real contributions to Wayang, and they count just as much in the Apache way.
+
+<QuickActions
+  actions={[
+    {label: 'Join the dev@ mailing list', to: 'mailto:dev-subscribe@wayang.apache.org', primary: true},
+    {label: 'Ways to contribute', to: '#every-contribution-counts-not-just-code'},
+    {label: 'Browse open issues', to: 'https://github.com/apache/wayang/issues'},
+    {label: 'Contribution guide', to: '/docs/community/contribute'},
+  ]}
+/>
+
+## Talk with us
+
+The **dev@ mailing list** is where the project lives: design discussions, release votes, and questions all happen there, in public and archived. The other channels are great for following the project and sharing news.
+
+<CardGrid
+  cards={[
+    {
+      icon: 'mail',
+      title: 'dev@ mailing list',
+      highlight: true,
+      description:
+        'Ask questions, propose ideas, introduce yourself, and take part in project decisions. To subscribe, send an empty email and reply to the confirmation.',
+      links: [
+        {label: 'Subscribe', to: 'mailto:dev-subscribe@wayang.apache.org'},
+        {label: 'Archive', to: 'https://lists.apache.org/list.html?dev@wayang.apache.org'},
+      ],
+    },
+    {
+      icon: 'issue',
+      title: 'GitHub issues',
+      description:
+        'Report a bug, request a feature, or find something to work on. Please search existing issues first.',
+      links: [
+        {label: 'Open issues', to: 'https://github.com/apache/wayang/issues'},
+        {label: 'New issue', to: 'https://github.com/apache/wayang/issues/new'},
+      ],
+    },
+    {
+      icon: 'hash',
+      title: 'Slack',
+      description:
+        'Chat in real time in #wayang on the ASF Slack. Anyone with an @apache.org address can join directly; everyone else, send a short email to dev@ asking for an invitation.',
+      links: [
+        {
+          label: 'Request an invitation',
+          to: 'mailto:dev@wayang.apache.org?subject=Slack%20invitation%20request',
+        },
+        {label: 'ASF Slack', to: 'https://the-asf.slack.com'},
+      ],
+    },
+    {
+      icon: 'activity',
+      title: 'commits@ mailing list',
+      description:
+        'Follow every commit, pull request, and issue update as it happens.',
+      links: [
+        {label: 'Subscribe', to: 'mailto:commits-subscribe@wayang.apache.org'},
+        {label: 'Archive', to: 'https://lists.apache.org/list.html?commits@wayang.apache.org'},
+      ],
+    },
+    {
+      icon: 'pen',
+      title: 'Blog',
+      description:
+        'Release announcements, technical deep dives, and stories from contributors and students.',
+      links: [{label: 'Read the blog', to: '/blog'}],
+    },
+    {
+      icon: 'play',
+      title: 'YouTube',
+      description: 'Talks, demos, and tutorials about Wayang and cross-platform data processing.',
+      links: [{label: '@apachewayang', to: 'https://www.youtube.com/@apachewayang'}],
+    },
+    {
+      icon: 'people',
+      title: 'LinkedIn',
+      description: 'Project news, events, and updates from the community.',
+      links: [{label: 'Apache Wayang', to: 'https://www.linkedin.com/company/apachewayang'}],
+    },
+    {
+      icon: 'chat',
+      title: 'Reddit',
+      description: 'Informal discussion, links, and questions from users.',
+      links: [{label: 'r/ApacheWayang', to: 'https://www.reddit.com/r/ApacheWayang'}],
+    },
+    {
+      icon: 'megaphone',
+      title: 'X (Twitter)',
+      description: 'Short announcements about releases, talks, and papers.',
+      links: [{label: '@apachewayang', to: 'https://twitter.com/apachewayang'}],
+    },
+  ]}
+/>
+
+## Every contribution counts, not just code
+
+Open source projects need much more than code to thrive. Pick whatever matches your skills and interests; most of these don't involve the codebase at all.
+
+<CardGrid
+  cards={[
+    {
+      icon: 'book',
+      title: 'Documentation',
+      description:
+        'Fix a typo, clarify a confusing guide, write a tutorial, or add an example. Good docs are often the most impactful contribution, and this website is open source too.',
+      links: [{label: 'Website repo', to: 'https://github.com/apache/wayang-website'}],
+    },
+    {
+      icon: 'megaphone',
+      title: 'Social media',
+      description:
+        'Share releases, blog posts, and your own Wayang experiments on LinkedIn, X, Reddit, or wherever your audience is. Helping others discover Wayang grows the community.',
+      links: [
+        {label: 'LinkedIn', to: 'https://www.linkedin.com/company/apachewayang'},
+        {label: 'X', to: 'https://twitter.com/apachewayang'},
+      ],
+    },
+    {
+      icon: 'people',
+      title: 'Talks and events',
+      description:
+        'Present Wayang at a meetup, conference, lecture, or company tech talk. Let us know on dev@ so we can help spread the word.',
+      links: [{label: 'Talks on YouTube', to: 'https://www.youtube.com/@apachewayang'}],
+    },
+    {
+      icon: 'pen',
+      title: 'Blog posts and articles',
+      description:
+        'Write about how you use Wayang, a benchmark you ran, or a lesson learned. We are happy to publish posts on the Wayang blog or link to yours.',
+      links: [
+        {label: 'Our blog', to: '/blog'},
+        {label: 'Propose a post', to: 'https://github.com/apache/wayang-website'},
+      ],
+    },
+    {
+      icon: 'help',
+      title: 'Help other users',
+      description:
+        'Answer questions on the mailing list or in issues. Sharing what you know is one of the most valued contributions.',
+      links: [{label: 'Mailing list guide', to: '/docs/community/mailinglist'}],
+    },
+    {
+      icon: 'check',
+      title: 'Test and report',
+      description:
+        'Try release candidates on your workloads, vote on dev@, and file clear bug reports or feature requests.',
+      links: [
+        {label: 'Downloads', to: '/docs/start/download'},
+        {label: 'New issue', to: 'https://github.com/apache/wayang/issues/new'},
+      ],
+    },
+    {
+      icon: 'school',
+      title: 'Students',
+      description:
+        'Wayang takes part in programmes like Google Summer of Code and welcomes thesis projects. Read about past projects on the blog.',
+      links: [{label: 'Student projects', to: '/blog/tags/gsoc'}],
+    },
+    {
+      icon: 'code',
+      title: 'Code',
+      description:
+        'Fix bugs, add operators, or support new platforms. The steps below walk you through your first pull request.',
+      links: [
+        {label: 'Add an operator', to: '/docs/guide/adding-operators'},
+        {label: 'Optimizer', to: '/docs/guide/optimizer'},
+      ],
+    },
+  ]}
+/>
+
+## Your first pull request
+
+If you want to change code or documentation, most contributors follow roughly these steps. You don't need permission to start, but saying hello first helps us point you in the right direction.
+
+<Steps
+  steps={[
+    {
+      title: 'Introduce yourself',
+      body: (
+        <p>
+          Send a short email to <a href="mailto:dev@wayang.apache.org">dev@wayang.apache.org</a>{' '}
+          saying who you are and what you are interested in. For larger changes, describe your plan
+          there before you start coding so others can give early feedback.
+        </p>
+      ),
+    },
+    {
+      title: 'Set up your environment',
+      body: (
+        <p>
+          Fork <a href="https://github.com/apache/wayang">apache/wayang</a>, build it locally with the{' '}
+          <Link to="/docs/guide/installation">installation guide</Link>, and get familiar with the
+          codebase through <Link to="/docs/guide/developing-in-wayang">Developing in Wayang</Link>.
+        </p>
+      ),
+    },
+    {
+      title: 'Pick something to work on',
+      body: (
+        <p>
+          Choose an <a href="https://github.com/apache/wayang/issues">open issue</a>, fix a bug you
+          ran into, or improve the documentation. Comment on the issue so others know you are on it.
+        </p>
+      ),
+    },
+    {
+      title: 'Open a pull request',
+      body: (
+        <p>
+          Make sure the build and tests pass, then open a PR against <code>main</code>. Read the{' '}
+          <Link to="/docs/community/contribute">contribution guide</Link> and, if you use AI tools, our{' '}
+          <Link to="/docs/community/ai-tooling-policy">AI tooling policy</Link>.
+        </p>
+      ),
+    },
+    {
+      title: 'Iterate with reviewers',
+      body: (
+        <p>
+          A committer will review your PR. Address the comments, and once it is approved it gets
+          merged. Welcome aboard!
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## Grow with the project
+
+Apache projects run on merit: people who contribute steadily earn more responsibility.
+
+<CardGrid
+  cards={[
+    {
+      icon: 'key',
+      title: 'Become a committer',
+      description:
+        'Committers have write access to the repositories. The PMC invites people with sustained contributions of any kind, including documentation, community building, and advocacy, not only code.',
+      links: [{label: 'What we look for', to: '/docs/community/committer'}],
+    },
+    {
+      icon: 'people',
+      title: 'Join the PMC',
+      description:
+        'The Project Management Committee oversees releases, votes on new committers, and keeps the project healthy. Active committers are invited over time.',
+      links: [
+        {label: 'Meet the team', to: '/docs/community/team'},
+        {label: 'ASF guidance', to: 'https://www.apache.org/dev/pmc.html'},
+      ],
+    },
+    {
+      icon: 'shield',
+      title: 'Code of conduct',
+      description:
+        'We follow the Apache Code of Conduct and expect respectful, inclusive behaviour in every channel.',
+      links: [
+        {label: 'Read it', to: 'https://www.apache.org/foundation/policies/conduct.html'},
+        {label: 'Report a vulnerability', to: '/docs/community/security'},
+      ],
+    },
+  ]}
+/>
+
+## Still have questions?
+
+<Callout>
+  <p>
+    Write to <a href="mailto:dev@wayang.apache.org">dev@wayang.apache.org</a>. Messages from
+    non-subscribers are held for moderation, so subscribing first gets your email through faster and
+    makes sure you see the replies. For quick chats you can
+    also ask on dev@ for an invitation to <code>#wayang</code> on the ASF Slack. If you aren't sure where something
+    belongs, the mailing list is always the right place to ask.
+  </p>
+</Callout>

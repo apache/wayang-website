@@ -4,20 +4,15 @@ title: Community Resources & External Coverage
 sidebar_position: 8
 ---
 
-Apache Wayang thrives because of the conversations, field notes, and benchmarks that the community shares publicly. To anchor every new visitor in our core story, treat [What is Wayang?](/docs/introduction/about) as the **pillar page** for everything related to distributed and federated data processing with Wayang.
-
-Use the curated resources below to discover third‑party perspectives, then jump back to the pillar page whenever you need the full technical scope.
+Explore articles and perspectives about Apache Wayang from the wider community. For an introduction to the project, see [What is Wayang?](/docs/introduction/about).
 
 ## External Articles & Mentions
 
-- [What are the performance implications of multi-engine data processing?](https://www.novatechflow.com/2025/06/what-are-performance-implications-of.html) — Novatech Flow (Jun 2025). A practitioner’s view on how Apache Wayang coordinates distributed engines without sacrificing performance, featuring federated compute patterns and tuning advice.
+- [Apache Wayang, the Wunderkind of data processing?](https://www.novatechflow.com/2026/11/apache-wayang-wunderkind-of-data.html) — Alexander Alten, Novatech Flow (Nov 2026). An overview of Wayang's research origins, cross-platform optimization, comparisons with Spark and Trino, and practical strengths and limitations.
+- [What are the performance implications of multi-engine data processing?](https://www.novatechflow.com/2025/06/what-are-performance-implications-of.html) — Novatech Flow (Jun 2025). A practitioner's view on how Apache Wayang coordinates distributed engines, including federated compute patterns and tuning advice.
+
+These articles reflect their authors' views. Inclusion does not imply endorsement by Apache Wayang or the Apache Software Foundation.
 
 ## Suggest a Resource
 
-Have you written or found a thoughtful deep dive about Apache Wayang? Open an issue or PR on [the website repo](https://github.com/apache/incubator-wayang-website) with the link and a 1–2 sentence description. We prioritize pieces that:
-
-- Explain cross-platform or federated computing scenarios powered by Wayang
-- Include benchmark data, architectural diagrams, or lessons learned from production usage
-- Link back to the pillar page or other official docs so readers can explore the project further
-
-Including high-quality external references alongside the official documentation helps search engines and AI assistants understand how the community uses Apache Wayang in the broader distributed computing ecosystem.
+Have you written or found an article about Apache Wayang? Open an issue or pull request on [the website repository](https://github.com/apache/wayang-website) with the link and a short description. Technical deep dives, benchmarks, and lessons from using Wayang are welcome.

@@ -30,10 +30,89 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
+.wayang-star-message {
+  display: inline-block;
+  padding: 0.125rem 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.wayang-star-message a {
+  color: #733c00;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+}
+
+.wayang-star-message a:hover {
+  color: #292d39;
+}
+
 .navbar__logo img {
-  height: 150%;
-  margin-left: 50px;
-  margin-top: -10px;
+  height: 100%;
+  width: auto;
+}
+
+.navbar__brand {
+  flex-shrink: 0;
+}
+
+.navbar__items:not(.navbar__items--right) {
+  flex: 0 0 auto;
+}
+
+@media screen and (min-width: 1151px) and (max-width: 1400px) {
+  .navbar__item {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .navbar__search-input {
+    width: 8rem;
+  }
+}
+
+@media screen and (min-width: 997px) and (max-width: 1150px) {
+  .navbar__item {
+    padding-left: 0.375rem;
+    padding-right: 0.375rem;
+    font-size: 0.8125rem;
+  }
+
+  .navbar__search-input {
+    width: 5rem;
+  }
+}
+
+@media screen and (max-width: 996px) {
+  .navbar__brand {
+    margin-right: 0.5rem;
+  }
+
+  .navbar__logo {
+    height: 2.25rem;
+    margin-right: 0;
+  }
+
+  .navbar__logo img {
+    height: 100%;
+    width: auto;
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  .navbar-sidebar__brand .navbar__logo {
+    margin-left: 0.25rem;
+  }
+
+  .navbar__search-input {
+    font-size: 0.875rem;
+    padding: 0 0.5rem 0 2rem;
+    width: 9rem;
+    max-width: 42vw;
+  }
 }
 
 .header-github-link:hover {
@@ -54,13 +133,26 @@
   no-repeat;
 }
 
+.footer a:has(.footer__logo) {
+  /* Docusaurus dims footer logo links by default; preserve ASF brand colors. */
+  opacity: 1;
+  transition: none;
+}
+
 .footer__logo {
-  margin-top: 50px;
+  margin-top: 24px;
+  /* Official primary-color ASF artwork on white. Padding preserves the clear
+     space required by the ASF style guide (at least the uppercase A's height).
+     Source: https://www.apache.org/foundation/press/kit/asf_logo_wide.svg */
+  background: #fff;
+  padding: 24px;
+  max-width: 100%;
+  height: auto;
 }
 
 .footer__copyright {
   font-size: .7em;
-  margin-top: 50px;
+  margin-top: 24px;
 }
 
 .footer__links {
