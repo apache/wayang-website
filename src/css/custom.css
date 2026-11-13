@@ -36,6 +36,35 @@
   margin-top: -10px;
 }
 
+@media screen and (max-width: 996px) {
+  .navbar__brand {
+    margin-right: 0.5rem;
+  }
+
+  .navbar__logo {
+    height: 2.25rem;
+    margin-right: 0;
+  }
+
+  .navbar__logo img {
+    height: 100%;
+    width: auto;
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  .navbar-sidebar__brand .navbar__logo {
+    margin-left: 0.25rem;
+  }
+
+  .navbar__search-input {
+    font-size: 0.875rem;
+    padding: 0 0.5rem 0 2rem;
+    width: 9rem;
+    max-width: 42vw;
+  }
+}
+
 .header-github-link:hover {
   opacity: 0.6;
 }
