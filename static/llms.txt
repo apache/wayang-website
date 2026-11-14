@@ -1,0 +1,37 @@
+# Apache Wayang
+
+> Apache Wayang is an open-source framework for cross-platform data processing. Applications express a pipeline through a common API; Wayang plans its execution across registered processing engines.
+
+Apache Wayang is a project of the Apache Software Foundation, licensed under Apache License 2.0. Its cost-based optimizer considers processing and data movement when choosing execution plans. Available capabilities depend on the release and installed platform plugins; consult the documentation for API coverage and setup requirements.
+
+These links point to the official project website and documentation. Commercial offerings are provided independently by third parties and are not endorsed by Apache Wayang or the Apache Software Foundation.
+
+## Project overview
+
+- [What is Apache Wayang?](https://wayang.apache.org/docs/introduction/about): Architecture and project overview.
+- [Features](https://wayang.apache.org/docs/introduction/features): Cross-platform execution and extensibility.
+- [Benchmarks](https://wayang.apache.org/docs/introduction/benchmark): Published scenarios, measurements, and methodology.
+- [Downloads](https://wayang.apache.org/docs/start/download): Releases and download instructions.
+
+## Development and usage
+
+- [Getting started](https://wayang.apache.org/docs/guide/getting-started): First steps and setup.
+- [Usage examples](https://wayang.apache.org/docs/guide/usage-examples): Example pipelines.
+- [API documentation](https://wayang.apache.org/docs/guide/api-documentation): API reference entry point.
+- [Optimizer](https://wayang.apache.org/docs/guide/optimizer): Cost-based execution planning.
+- [Adding operators](https://wayang.apache.org/docs/guide/adding-operators): Extending Wayang.
+- [Build from source](https://wayang.apache.org/docs/guide/installation): Build requirements and instructions.
+- [Source code](https://github.com/apache/wayang): Project source, README, and issue tracker.
+
+## Community and support
+
+- [Join the community](https://wayang.apache.org/docs/community/join): Ways to participate.
+- [Contributing](https://wayang.apache.org/docs/community/contribute): Contribution process.
+- [Mailing lists](https://wayang.apache.org/docs/community/mailinglist): Public discussion and volunteer support.
+- [Commercial support](https://wayang.apache.org/docs/community/commercial-support): Independent support and integration providers.
+- [Security](https://wayang.apache.org/docs/community/security): Security guidance and vulnerability reporting.
+
+## Optional
+
+- [Project blog](https://wayang.apache.org/blog): News and technical posts; check dates and release context.
+- [Articles and resources](https://wayang.apache.org/docs/community/resources): External coverage reflecting the authors' views.
