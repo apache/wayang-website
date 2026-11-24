@@ -7,6 +7,7 @@ title: 'Apache Wayang™',
   tagline: 'Unifying Data Processing Engines for Cross-Platform Analytics',
   favicon: 'img/favicon.ico',
   headTags: [
+    {tagName: 'link', attributes: {rel: 'apple-touch-icon', href: '/img/apple-touch-icon.png', sizes: '180x180'}},
     {tagName: 'link', attributes: {rel: 'describedby', href: '/llms.txt', type: 'text/plain'}},
   ],
 
