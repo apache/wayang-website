@@ -1,0 +1,1 @@
+(Array.isArray(globalThis.webpackChunkwayang_website)?globalThis.webpackChunkwayang_website:globalThis.webpackChunkwayang_website=[]).push([[8577],{549(a,e,s){"use strict";s.d(e,{A:()=>b});var b=s(8291)},5741(){}}]);

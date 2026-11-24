@@ -1,0 +1,1 @@
+"use strict";(Array.isArray(globalThis.webpackChunkwayang_website)?globalThis.webpackChunkwayang_website:globalThis.webpackChunkwayang_website=[]).push([[8880],{2985(a,e,s){s.r(e),s.d(e,{default:()=>r});var i=s(612),n=s(4848);function r(){return(0,n.jsx)(i.rd,{to:"/docs/community/join"})}}}]);
