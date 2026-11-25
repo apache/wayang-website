@@ -4,27 +4,25 @@ The source repository for the website of Apache Wayang.
 ### Clone the website repo
 
 ```
-git clone git@github.com:apache/incubator-wayang-website.git
+git@github.com:apache/wayang-website.git
 ```
 
 ### Installation
-
-```
-$ yarn
+```bash
+npm install
 ```
 
 ### Local Development
-
-```
-$ yarn start
+```bash
+npm start
 ```
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
 ### Build
 
-```
-$ yarn build
+```bash
+$ npm run build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
