@@ -3,8 +3,8 @@ The source repository for the website of Apache Wayang.
 
 ### Clone the website repo
 
-```
-git@github.com:apache/wayang-website.git
+```bash
+git clone git@github.com:apache/wayang-website.git
 ```
 
 ### Installation
