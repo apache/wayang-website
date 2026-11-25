@@ -12,8 +12,8 @@
 
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" sizes="180x180">
 <link rel="describedby" href="/llms.txt" type="text/plain"><link rel="stylesheet" href="/assets/css/styles.5f2209a9.css">
-<script src="/assets/js/runtime~main.9102b7aa.js" defer="defer"></script>
-<script src="/assets/js/main.5d56c04f.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.b76e7bd6.js" defer="defer"></script>
+<script src="/assets/js/main.60131f14.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -28,8 +28,8 @@
 <ul>
 <li class=""><code>wayang-core</code>: provides core data structures and the optimizer (required)</li>
 <li class=""><code>wayang-basic</code>: provides common operators and data types for your apps (recommended)</li>
-<li class=""><code>wayang-api</code>: provides an easy-to-use Scala and Java API to assemble Wayang plans (recommended)</li>
-<li class=""><code>wayang-java</code>, <code>wayang-spark</code>, <code>wayang-graphchi</code>, <code>wayang-sqlite3</code>, <code>wayang-postgres</code>: adapters for the various supported processing platforms</li>
+<li class=""><code>wayang-api-scala-java</code>: provides an easy-to-use Scala and Java API to assemble Wayang plans (recommended)</li>
+<li class=""><code>wayang-java</code>, <code>wayang-spark</code>, <code>wayang-giraph</code>, <code>wayang-sqlite3</code>, <code>wayang-postgres</code>: adapters for the various supported processing platforms</li>
 <li class=""><code>wayang-profiler</code>: provides functionality to learn operator and UDF cost functions from historical execution data</li>
 </ul>
 <p>For the sake of version flexibility, you still have to include your Hadoop (<code>hadoop-hdfs</code> and <code>hadoop-common</code>) and Spark (<code>spark-core</code> and <code>spark-graphx</code>) version of choice.</p>
@@ -106,7 +106,7 @@ To activate these profiles, you need to specify them when running maven, i.e.,<!
 </ul>
 </li>
 </ul>
-<p>To effectively define your applications with Apache Wayang, utilize its Scala or Java API, conveniently found within the <code>wayang-api</code> module. For clear illustrations, refer to the provided exampl[...]</p>
+<p>To effectively define your applications with Apache Wayang, utilize its Scala or Java API, conveniently found within the <code>wayang-api-scala-java</code> module. For clear illustrations, refer to the provided exampl[...]</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cost-functions">Cost Functions<a href="#cost-functions" class="hash-link" aria-label="Direct link to Cost Functions" title="Direct link to Cost Functions" translate="no">​</a></h2>
 <p>Wayang provides a utility to learn cost functions from historical execution data. Specifically, Wayang can learn configurations for load profile estimators (that estimate CPU load, disk load etc.[...]</p>
 <p>As an example, the <code>JavaMapOperator</code> draws its load profile estimator configuration via the configuration key <code>wayang.java.map.load</code>.
