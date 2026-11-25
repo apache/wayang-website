@@ -37,8 +37,8 @@ Apache Wayang is readily available through Maven Central, facilitating seamless 
 Note the `***`: Wayang ships with multiple modules that can be included in your app, depending on how you want to use it:
 * `wayang-core`: provides core data structures and the optimizer (required)
 * `wayang-basic`: provides common operators and data types for your apps (recommended)
-* `wayang-api`: provides an easy-to-use Scala and Java API to assemble Wayang plans (recommended)
-* `wayang-java`, `wayang-spark`, `wayang-graphchi`, `wayang-sqlite3`, `wayang-postgres`: adapters for the various supported processing platforms
+* `wayang-api-scala-java`: provides an easy-to-use Scala and Java API to assemble Wayang plans (recommended)
+* `wayang-java`, `wayang-spark`, `wayang-giraph`, `wayang-sqlite3`, `wayang-postgres`: adapters for the various supported processing platforms
 * `wayang-profiler`: provides functionality to learn operator and UDF cost functions from historical execution data
 
 For the sake of version flexibility, you still have to include your Hadoop (`hadoop-hdfs` and `hadoop-common`) and Spark (`spark-core` and `spark-graphx`) version of choice.
@@ -109,7 +109,7 @@ Essential configuration settings:
     * `wayang.postgres.cpu.mhz (= 2700)`: clock frequency of processor PostgreSQL runs on in MHz
     * `wayang.postgres.cpu.cores (= 2)`: number of cores PostgreSQL runs on
 
-To effectively define your applications with Apache Wayang, utilize its Scala or Java API, conveniently found within the `wayang-api` module. For clear illustrations, refer to the provided exampl[...]
+To effectively define your applications with Apache Wayang, utilize its Scala or Java API, conveniently found within the `wayang-api-scala-java` module. For clear illustrations, refer to the provided exampl[...]
 
 ## Cost Functions
 Wayang provides a utility to learn cost functions from historical execution data. Specifically, Wayang can learn configurations for load profile estimators (that estimate CPU load, disk load etc.[...]
