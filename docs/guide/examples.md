@@ -51,7 +51,7 @@ In addition, you can obtain the most recent snapshot version of Wayang via Sonat
     <name>Sonatype Snapshot Repository</name>
     <url>https://oss.sonatype.org/content/repositories/snapshots</url>
   </repository>
-<repositories>
+</repositories>
 ```
 
 If you need to rebuild Wayang, e.g., to use a different Scala version, you can simply do so via Maven:
