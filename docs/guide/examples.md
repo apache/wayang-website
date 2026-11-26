@@ -23,15 +23,15 @@ id: examples
 -->
 
 ## Requirements
-Apache Wayang is built upon the foundations of Java 11 and Scala 2.12, providing a robust and versatile platform for data processing applications. If you intend to build Wayang from source, you wi[...]
+Apache Wayang is built upon the foundations of Java 17 and Scala 2.12, providing a robust and versatile platform for data processing applications. If you intend to build Wayang from source, you will also need to have Apache Maven, the popular build automation tool, installed on your system. Additionally, be mindful that some of the processing platforms supported by Wayang may have their own specific installation requirements.
 
 ### Get Wayang
-Apache Wayang is readily available through Maven Central, facilitating seamless integration into your development workflow. For instance, to utilize Wayang in your Maven-based project, simply add [...]
+Apache Wayang is readily available through Maven Central, facilitating seamless integration into your development workflow. For instance, to utilize Wayang in your Maven-based project, simply add the following dependency to your project's POM file:
 ```xml
 <dependency>
   <groupId>org.apache.wayang</groupId>
   <artifactId>wayang-***</artifactId>
-  <version>0.7.1</version>
+  <version>1.1.1</version>
 </dependency>
 ```
 Note the `***`: Wayang ships with multiple modules that can be included in your app, depending on how you want to use it:
@@ -43,7 +43,7 @@ Note the `***`: Wayang ships with multiple modules that can be included in your 
 
 For the sake of version flexibility, you still have to include your Hadoop (`hadoop-hdfs` and `hadoop-common`) and Spark (`spark-core` and `spark-graphx`) version of choice.
 
-In addition, you can obtain the most recent snapshot version of Wayang via Sonatype's snapshot repository. Just included
+In addition, you can obtain the most recent snapshot version of Wayang via Sonatype's snapshot repository. Just include:
 ```xml
 <repositories>
   <repository>
@@ -62,14 +62,14 @@ If you need to rebuild Wayang, e.g., to use a different Scala version, you can s
    $ mvn clean install
    ```
    Note the `standalone` profile to fix Hadoop and Spark versions, so that Wayang apps do not explicitly need to declare the corresponding dependencies.
-   Also, note the `distro` profile, which assembles a binary Wayang distribution.
+   Also, note the `distribution` profile, which assembles a binary Wayang distribution.
    To activate these profiles, you need to specify them when running maven, i.e.,
     ```shell
     mvn clean install -P<profile name>
     ```
 
 ### Configure Wayang
-To enable Apache Wayang's smooth operation, you need to equip it with details about your processing platforms' capabilities and how to interact with them. A default configuration is available for [...]
+To enable Apache Wayang's smooth operation, you need to equip it with details about your processing platforms' capabilities and how to interact with them. A default configuration is available for initial testing, but creating a properties file is generally preferable for fine-tuning the configuration to suit your specific requirements. To harness this personalized configuration effortlessly, launch your application via
 ```shell
 $ java -Dwayang.configuration=url://to/my/wayang.properties ...
 ```
@@ -79,7 +79,7 @@ Essential configuration settings:
     * `wayang.core.log.enabled (= true)`: whether to log execution statistics to allow learning better cardinality and cost estimators for the optimizer
     * `wayang.core.log.executions (= ~/.wayang/executions.json)` where to log execution times of operator groups
     * `wayang.core.log.cardinalities (= ~/.wayang/cardinalities.json)` where to log cardinality measurements
-    * `wayang.core.optimizer.instrumentation (= org.apache.wayang.core.profiling.OutboundInstrumentationStrategy)`: where to measure cardinalities in Wayang plans; other options are `org.apache.wa[...]
+    * `wayang.core.optimizer.instrumentation (= org.apache.wayang.core.profiling.OutboundInstrumentationStrategy)`: where to measure cardinalities in Wayang plans; other options are `org.apache.wayang.core.profiling.NoInstrumentationStrategy` and `org.apache.wayang.core.profiling.FullInstrumentationStrategy`
     * `wayang.core.optimizer.reoptimize (= false)`: whether to progressively optimize Wayang plans
     * `wayang.basic.tempdir (= file:///tmp)`: where to store temporary files, in particular for inter-platform communication
 * Java Streams
@@ -109,10 +109,10 @@ Essential configuration settings:
     * `wayang.postgres.cpu.mhz (= 2700)`: clock frequency of processor PostgreSQL runs on in MHz
     * `wayang.postgres.cpu.cores (= 2)`: number of cores PostgreSQL runs on
 
-To effectively define your applications with Apache Wayang, utilize its Scala or Java API, conveniently found within the `wayang-api-scala-java` module. For clear illustrations, refer to the provided exampl[...]
+To effectively define your applications with Apache Wayang, utilize its Scala or Java API, conveniently found within the `wayang-api-scala-java` module. For clear illustrations, refer to the provided examples below.
 
 ## Cost Functions
-Wayang provides a utility to learn cost functions from historical execution data. Specifically, Wayang can learn configurations for load profile estimators (that estimate CPU load, disk load etc.[...]
+Wayang provides a utility to learn cost functions from historical execution data. Specifically, Wayang can learn configurations for load profile estimators (that estimate CPU load, disk load etc.) for both operators and UDFs, as long as the configuration provides a template for those estimators.
    
 As an example, the `JavaMapOperator` draws its load profile estimator configuration via the configuration key `wayang.java.map.load`.
 Now, it is possible to specify a load profile estimator template in the configuration under the key `<original key>.template`, e.g.:
@@ -122,7 +122,7 @@ wayang.java.map.load.template = {\
   "cpu":"?*in0"\
 }
 ```
-This template encapsulates a load profile estimator that requires at minimum one input cardinality and one output cardinality. Furthermore, it simulates CPU load by assuming a direct relationship[...]
+This template encapsulates a load profile estimator that requires at minimum one input cardinality and one output cardinality. Furthermore, it simulates CPU load by assuming a direct relationship with the input cardinality. However, more complex functions are possible.
    
 In particular, you can use
 * the variables `in0`, `in1`, ... and `out0`, `out1`, ... to incorporate the input and output cardinalities, respectively;
@@ -131,16 +131,16 @@ In particular, you can use
 * the functions `min(x0, x1, ...))`, `max(x0, x1, ...)`, `abs(x)`, `log(x, base)`, `ln(x)`, `ld(x)`;
 * and the constants `e` and `pi`.
 
-While Apache Wayang provides templates for all execution operators, you will need to explicitly define your user-defined functions (UDFs) by specifying their cost functions, which are based on co[...]
+While Apache Wayang provides templates for all execution operators, you will need to explicitly define your user-defined functions (UDFs) by specifying their cost functions, which are based on configuration parameters. This involves creating an initial specification and template for each UDF.
 As soon as execution data has been collected, you can initiate:
 ```shell
 java ... org.apache.wayang.profiler.ga.GeneticOptimizerApp [configuration URL [execution log]]
 ```
-This tool will attempt to determine suitable values for the question marks (`?`) within the load profile estimator templates, aligning them with the collected execution data and pre-defined confi[...]
+This tool will attempt to determine suitable values for the question marks (`?`) within the load profile estimator templates, aligning them with the collected execution data and pre-defined configuration entries for the load profile estimators. These optimized values can then be directly incorporated into your configuration.
 
 ## Examples
 
-For some executable examples, have a look at [this repository](https://github.com/sekruse/rheem-examples).
+For some executable examples, have a look at [the Apache Wayang applications](https://github.com/apache/wayang/tree/main/wayang-applications).
 
 ### WordCount
 
