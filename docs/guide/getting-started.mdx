@@ -270,7 +270,7 @@ cd wayang
 ./mvnw clean install -DskipTests
 ```
 
-To run on Spark, you'll need Apache Spark 3+ on your `PATH`.
+To run on Spark, you'll need Apache Spark 3.5.x on your `PATH`.
 
 </TabItem>
 <TabItem value="python" label="Python">
@@ -307,7 +307,7 @@ cd wayang-WAYANG_VERSION
 Before packaging, set the Python worker paths in
 `wayang-api/wayang-api-python/src/main/resources/wayang-api-python-defaults.properties`
 — the location of `python/src/pywy/execution/worker.py`, your `python3` command, and your
-site-packages directory. You'll also need a Java 11+ runtime available.
+site-packages directory. You'll also need a Java 17+ runtime available.
 
 With the REST API running, the Python examples above will execute. See the
 [pywayang README](https://github.com/apache/wayang/tree/main/python) for full details.

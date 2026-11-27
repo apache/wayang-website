@@ -92,10 +92,10 @@ Essential configuration settings:
     * `wayang.spark.hdfs.ms-per-mb (= 2.7)`: average throughput from HDFS to the Spark workers in ms/MB
     * `wayang.spark.network.ms-per-mb (= 8.6)`: average network throughput of the Spark workers in ms/MB
     * `wayang.spark.init.ms (= 4500)`: time it takes Spark to initialize in ms
-* GraphChi
-    * `wayang.graphchi.cpu.mhz (= 2700)`: clock frequency of processor GraphChi runs on in MHz
-    * `wayang.graphchi.cpu.cores (= 2)`: number of cores GraphChi runs on
-    * `wayang.graphchi.hdfs.ms-per-mb (= 2.7)`: average throughput from HDFS to GraphChi in ms/MB
+* Apache Giraph
+    * `wayang.giraph.cpu.mhz (= 2700)`: clock frequency of processor Giraph runs on in MHz
+    * `wayang.giraph.cores (= 2)`: number of cores Giraph runs on
+    * `wayang.giraph.hdfs.ms-per-mb (= 2.7)`: average throughput from HDFS to Giraph in ms/MB
 * SQLite
     * `wayang.sqlite3.jdbc.url`: JDBC URL to use SQLite
     * `wayang.sqlite3.jdbc.user`: optional user name
