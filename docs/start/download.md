@@ -54,13 +54,12 @@ Release Notes: [notes](https://downloads.apache.org/incubator/wayang/0.7.1/RELEA
   
   
 ### Frameworks supported
-- Apache Flink v1.7.1
+- Apache Flink 1.20.x
 - Apache Giraph v1.2.0-hadoop2
-- GraphChi v0.2.2 (only available with scala 11.x)
 - Java Streams (version depends on the java version)
 - JDBC-Template
 - Postgres v9.4.1208 (Implementation JDBC-Template)
-- Apache Spark v3.1.2 (scala 12.x) and v2.4.8 (scala 11.x)
+- Apache Spark 3.5.x (Scala 2.12)
 - SQLite3 v3.8.11.2 (implementation JDBC-Template)
 
 > NOTE: The supported platforms for Scala may vary depending on the Scala version.\
