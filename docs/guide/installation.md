@@ -36,14 +36,14 @@ cd wayang
 ./mvnw clean install -DskipTests
 ./mvnw clean package -pl :wayang-assembly -Pdistribution
 ```
-Then you can find the `wayang-assembly-0.7.1-SNAPSHOT-dist.tar.gz` under `wayang-assembly/target` directory.
+Then you can find the `wayang-assembly-WAYANG_VERSION-dist.tar.gz` under `wayang-assembly/target` directory.
 
 
 ## Prepare the environment
 ### Wayang
 ```shell
-tar -xvf wayang-assembly-0.7.1-SNAPSHOT-dist.tar.gz
-cd wayang-0.7.1-SNAPSHOT
+tar -xvf wayang-assembly-WAYANG_VERSION-dist.tar.gz
+cd wayang-WAYANG_VERSION
 ```
 
 In linux
@@ -59,7 +59,7 @@ echo "export PATH=${PATH}:${WAYANG_HOME}/bin" >> ~/.zshrc
 source ~/.zshrc
 ```
 ### Others
-- You need to install Apache Spark version 3 or higher. Don't forget to set the `SPARK_HOME` environment variable.
+- You need to install Apache Spark 3.5.x. Don't forget to set the `SPARK_HOME` environment variable.
 - You need to install Apache Hadoop version 3 or higher. Don't forget to set the `HADOOP_HOME` environment variable.
 
 ## Run the program
@@ -67,7 +67,7 @@ source ~/.zshrc
 To execute the WordCount example with Apache Wayang, you need to execute your program with the 'wayang-submit' command:
 
 ```shell
-cd wayang-0.7.1-SNAPSHOT
+cd wayang-WAYANG_VERSION
 ./bin/wayang-submit org.apache.wayang.apps.wordcount.Main java file://$(pwd)/README.md
 ```
 Then you should be able to see the output of the Wordcount example.
