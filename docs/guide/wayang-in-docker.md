@@ -32,7 +32,7 @@ This guide assumes knowledge about
 We provide a [pre-built docker image](https://hub.docker.com/r/apache/incubator-wayang)
 that contains the necessary tooling in order to run or develop Apache Wayang.
 The tools necessary for this are:
-    - Java 11
+    - Java 17
     - Apache Spark
     - Hadoop
     - Maven
@@ -92,8 +92,8 @@ mvn clean package -pl :wayang-assembly -Pdistribution
 Execute your code:
 ```shell
 cd wayang-assembly/target/
-tar -xvf apache-wayang-assembly-0.7.1-incubating-dist.tar.gz
-cd wayang-0.7.1
+tar -xvf apache-wayang-assembly-WAYANG_VERSION-dist.tar.gz
+cd wayang-WAYANG_VERSION
 ./bin/wayang-submit org.apache.wayang.<main_class> <parameters>
 ```
 
@@ -122,10 +122,10 @@ services:
     restart: always
 
   spark-master:
-    image: cluster-apache-spark:3.0.2
+    image: cluster-apache-spark:3.5.x
 
   spark-worker-a:
-    image: cluster-apache-spark:3.0.2
+    image: cluster-apache-spark:3.5.x
     depends_on:
       - spark-master
     environment:
