@@ -46,7 +46,7 @@ mvn clean package -pl :wayang-assembly -Pdistribution
 Before executing your code, make sure the required environment variables are set correctly.
 ```shell
 cd wayang-assembly/target/
-tar -xvf apache-wayang-assembly-0.7.1-SNAPSHOT-incubating-dist.tar.gz
-cd wayang-0.7.1-SNAPSHOT
+tar -xvf apache-wayang-assembly-WAYANG_VERSION-dist.tar.gz
+cd wayang-WAYANG_VERSION
 ./bin/wayang-submit org.apache.wayang.<main_class> <parameters>
 ```
